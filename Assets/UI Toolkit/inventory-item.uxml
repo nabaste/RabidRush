@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="inventory-item" style="min-width: 50px; min-height: 50px; background-color: rgb(204, 192, 20); background-image: url(&apos;/Assets/Materials/Icons/BarricadeIcon.png&apos;); -unity-background-image-tint-color: rgb(231, 42, 42); width: 75px; height: 75px; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;" />
+</ui:UXML>

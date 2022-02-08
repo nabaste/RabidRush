@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bbaac91d8d44529a07c029b5bb3f16, type: 3}
+  m_Name: HeavyZombieData
+  m_EditorClassIdentifier: 
+  speed: 2
+  life: 50
+  attackDamage: 20
+  attackCooldown: 2
+  grouping: 4
+  groupingStrength: 0.904
+  poolingCost: 50
+  prefab: {fileID: 8688710527587877144, guid: ec31d5b3a980c45caa402aff8a659492, type: 3}
+  deathAnimationDuration: 0.4

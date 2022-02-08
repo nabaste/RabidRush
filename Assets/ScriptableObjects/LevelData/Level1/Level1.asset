@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 595991a787014317936aba3be9a7fadd, type: 3}
+  m_Name: Level1
+  m_EditorClassIdentifier: 
+  startPositions:
+  - {fileID: 11400000, guid: a7777dd09e3614689aa944daa8ed296f, type: 2}
+  - {fileID: 11400000, guid: 3147c6f62dfb24562b1eac0327c939f0, type: 2}
+  - {fileID: 11400000, guid: eecf86735bf6646aa9ed6871875cf83c, type: 2}
+  - {fileID: 11400000, guid: 5b7c2e7d96c5e413c9e0fe33d9cc1fa5, type: 2}
+  - {fileID: 11400000, guid: 7a0d82423fc2a464090024a8bec3fe66, type: 2}
+  - {fileID: 11400000, guid: 5b094e6d18b6b4f0c87427aa724a2c52, type: 2}
+  endPosition: {x: 0, y: 0, z: -15}
+  lootTimes: []
+  budgets: e803000098080000ac0d0000

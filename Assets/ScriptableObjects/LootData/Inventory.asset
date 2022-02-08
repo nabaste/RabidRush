@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b159579530c403ab8adecc06344f62, type: 3}
+  m_Name: Inventory
+  m_EditorClassIdentifier: 
+  items:
+  - itemName: 
+    id: 0
+    description: 
+    rarity: 0
+    img: {fileID: 21300000, guid: 3d500f0b4fa4546388ccc5feeda22cf8, type: 3}
+    statToImprove: 0
+    changePercentage: 0
+    wearer: 0
+  - itemName: 
+    id: 0
+    description: 
+    rarity: 0
+    img: {fileID: 21300000, guid: 3d500f0b4fa4546388ccc5feeda22cf8, type: 3}
+    statToImprove: 0
+    changePercentage: 0
+    wearer: 0
+  - itemName: 
+    id: 0
+    description: 
+    rarity: 0
+    img: {fileID: 21300000, guid: 3d500f0b4fa4546388ccc5feeda22cf8, type: 3}
+    statToImprove: 0
+    changePercentage: 0
+    wearer: 0
+  - itemName: 
+    id: 0
+    description: 
+    rarity: 0
+    img: {fileID: 21300000, guid: 3d500f0b4fa4546388ccc5feeda22cf8, type: 3}
+    statToImprove: 0
+    changePercentage: 0
+    wearer: 0
+  - itemName: 
+    id: 0
+    description: 
+    rarity: 0
+    img: {fileID: 21300000, guid: 3d500f0b4fa4546388ccc5feeda22cf8, type: 3}
+    statToImprove: 0
+    changePercentage: 0
+    wearer: 0

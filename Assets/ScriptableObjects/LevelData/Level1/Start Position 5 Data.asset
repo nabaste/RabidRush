@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6e8630ffbb4f31b8f5596075afb80e, type: 3}
+  m_Name: Start Position 5 Data
+  m_EditorClassIdentifier: 
+  position: {x: -12, y: 0.2, z: -3}
+  priority: 0.1
+  zombieDatas:
+  - {fileID: 11400000, guid: 552e33b2beff64be48008db40c2ffded, type: 2}
+  - {fileID: 11400000, guid: c83b20ed24ff540aebba34f19ebbc421, type: 2}
+  zombieChances:
+  - 0.6
+  - 0.4
