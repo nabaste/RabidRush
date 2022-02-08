@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using RabidRush.ScriptableObjects;
 using UnityEngine;
 
-public class ZombieAmountGenerator : MonoBehaviour
+public class WavesParametersGenerator : MonoBehaviour
 {
     [SerializeField] private PlayerData pd;
     [SerializeField] private LevelData ld;
     [SerializeField] private ZombieList zl;
+    private ZombiePool _zp;
     private float _budget;
-    
+
     private List<float> times = new List<float>();
 
     private void Awake()
     {
+        _zp = GetComponent<ZombiePool>();
         _budget = pd.Level switch
         {
             DifficultyLevel.Easy => ld.Budgets[0],
@@ -24,17 +26,22 @@ public class ZombieAmountGenerator : MonoBehaviour
         CalculateAmounts();
     }
 
+    private void Start()
+    {
+        // _zp.CreatePoolObjects();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            _zp.CreatePoolObjects();
             Make();
         }
     }
 
     private void CalculateAmounts()
     {
-        var pool = GetComponent<ZombiePool>();
         for (int i = 0; i < ld.StartLocations.Length; i++)
         {
             var locationBudget = _budget * ld.StartLocations[i].Priority;
@@ -55,8 +62,8 @@ public class ZombieAmountGenerator : MonoBehaviour
                 chances.Add(zl.zombies[j], chance);
 
                 var objectsPools = new ZombiePool.ObjectsPools(zl.zombies[j].Prefab.name + i,
-                    (int) groupAmount * zl.zombies[j].Grouping, times, zl.zombies[j].Prefab);
-                pool.pools.Add(objectsPools);
+                    zl.zombies[j].Grouping, CalculateTimes((int)groupAmount, j), zl.zombies[j].Prefab);
+                _zp.pools.Add(objectsPools);
 
 
                 Debug.Log($"En la posición número {i}, salen {groupAmount} grupos de {zl.zombies[j].Prefab.name}. " +
@@ -68,9 +75,18 @@ public class ZombieAmountGenerator : MonoBehaviour
         }
     }
 
-    private void CalculateTimes()
+    private List<float> CalculateTimes(int numberOfWaves, int zombie)
     {
+        var result = new List<float>();
+        var sum = 0f;
+        for (var i = 0; i < numberOfWaves; i++)
+        {
+            var time = UnityEngine.Random.Range(0, zl.zombies[zombie].OuterGroupingTimeSeparation);
+            sum += time;
+            result.Add(sum);
+        }
         
+        return result;
     }
 
     private void Make()
@@ -96,10 +112,11 @@ public class ZombieAmountGenerator : MonoBehaviour
             name = name
         };
         var spawner = origin.AddComponent<ZombieSpawner>();
+        spawner.pool = GetComponent<ZombiePool>();
         spawner.spawnPosition = pos;
         spawner.poolTag = name;
-        spawner.spawnTime = 2f;
-        spawner.waveTimes = times;
-        spawner.pool = GetComponent<ZombiePool>();
+
+        //Disable the spawner. It will be enabled when the player hits START
+        spawner.enabled = false;
     }
 }

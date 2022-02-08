@@ -11,11 +11,11 @@ public class ZombiePool : MonoBehaviour
         public string poolTag;
         public int size;
         public GameObject prefab;
-        public Queue<GameObject> poolQueue;
-
         public List<float> spawnTimes;
 
-        public ObjectsPools(string tag, int size, List<float> times,GameObject prefab)
+        public Queue<GameObject> poolQueue;
+
+        public ObjectsPools(string tag, int size, List<float> times, GameObject prefab)
         {
             this.poolTag = tag;
             this.size = size;
@@ -24,12 +24,9 @@ public class ZombiePool : MonoBehaviour
         }
     }
 
+    #region Singleton
 
     public static ZombiePool Instance;
-
-    public List<ObjectsPools> pools;
-
-    private Dictionary<string, ObjectsPools> _poolDictionary;
 
     private void Awake()
     {
@@ -41,7 +38,17 @@ public class ZombiePool : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    #endregion
+
+
+    public List<ObjectsPools> pools;
+    [SerializeField] private Transform container;
+    private Dictionary<string, ObjectsPools> _poolDictionary;
+
+    public void CreatePoolObjects()
+    {
         _poolDictionary = new Dictionary<string, ObjectsPools>();
 
         foreach (var item in pools)
@@ -51,7 +58,7 @@ public class ZombiePool : MonoBehaviour
 
             for (int i = 0; i < item.size; i++)
             {
-                var poolObject = Instantiate(item.prefab);
+                var poolObject = Instantiate(item.prefab, container, true);
                 poolObject.SetActive(false);
                 var iPoolableObject = poolObject.GetComponent<IPoolable>();
                 iPoolableObject.PoolTag = item.poolTag;
@@ -62,7 +69,6 @@ public class ZombiePool : MonoBehaviour
 
     private void RecycleObject(string pooltag, GameObject objectToRecycle)
     {
-        print("Reciclado");
         var currentPool = _poolDictionary[pooltag];
         currentPool.poolQueue.Enqueue(objectToRecycle);
     }
@@ -79,7 +85,7 @@ public class ZombiePool : MonoBehaviour
 
         if (currentPool.poolQueue.Count == 0)
         {
-            var poolObject = Instantiate(currentPool.prefab);
+            var poolObject = Instantiate(currentPool.prefab, container, true);
             poolObject.SetActive(false);
             var iPoolableObject1 = poolObject.GetComponent<IPoolable>();
             iPoolableObject1.PoolTag = currentPool.poolTag;
