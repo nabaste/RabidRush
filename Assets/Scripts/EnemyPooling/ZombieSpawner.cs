@@ -19,6 +19,11 @@ public class ZombieSpawner : MonoBehaviour
     private void Awake()
     {
         _counter = 0;
+        // _times = pool.GetTimes(poolTag);
+    }
+
+    private void Start()
+    {
         _times = pool.GetTimes(poolTag);
     }
 
@@ -26,7 +31,8 @@ public class ZombieSpawner : MonoBehaviour
     {
         _counter += Time.deltaTime;
 
-        if (_counter < _times[_presentWave] || _times.Capacity >= _presentWave) return;
+        if (_times.Count <= _presentWave ) return;
+        if (_counter < _times[_presentWave]) return;
         _presentWave++;
         var zombie = pool.GetObject(poolTag);
         zombie.transform.position = spawnPosition;

@@ -117,6 +117,6 @@ public class WavesParametersGenerator : MonoBehaviour
         spawner.poolTag = name;
 
         //Disable the spawner. It will be enabled when the player hits START
-        spawner.enabled = false;
+        // spawner.enabled = false;
     }
 }

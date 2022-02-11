@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                Debug.LogError("Scene Manager is Null!");
+                Debug.LogError("Level Manager is Null!");
             }
             return _instance;
         }
