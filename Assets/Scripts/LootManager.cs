@@ -10,16 +10,16 @@ public class LootManager : MonoBehaviour
     [SerializeField] float difficultRarityRate;
     [SerializeField] float rareRarityRate;
     [SerializeField] float epicRarityRate;
-    [SerializeField] private Items _existing;
-    [SerializeField] private Items _inventory;
+    [SerializeField] private ItemList _existing;
+    [SerializeField] private ItemList _inventory;
     public UnityAction OnItem0Selected;
     public UnityAction OnItem1Selected;
     public UnityAction OnItem2Selected;
     private void Awake()
     {
-        OnItem0Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[0]);
-        OnItem1Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[1]);
-        OnItem2Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[2]);
+        // OnItem0Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[0]);
+        // OnItem1Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[1]);
+        // OnItem2Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[2]);
     }
     private void SaveItem(Item item)
     {
@@ -44,10 +44,10 @@ public class LootManager : MonoBehaviour
     public List<Item> DrawThreeItems()
     {
         availableLoots.Clear();
-        foreach (var item in _existing.items)
-        {
-            SaveItem(item);
-        }
+        // foreach (var item in _existing.items)
+        // {
+        //     SaveItem(item);
+        // }
         List<Item> result = new List<Item>();
 
         Item item0 = RandomLootGenerator.Generate(availableLoots);
@@ -66,6 +66,6 @@ public class LootManager : MonoBehaviour
     }
     private void SaveSelectedItem(Item item)
     {
-        _inventory.items.Add(item);
+        // _inventory.items.Add(item);
     }
 }

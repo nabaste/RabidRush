@@ -28,5 +28,8 @@ namespace RabidRush.ScriptableObjects
             get => level;
             set => level = value;
         }
+
+        [SerializeField] private ItemList inventory;
+        public ItemList Inventory => inventory;
     }
 }

@@ -7,14 +7,11 @@ using UnityEngine.UIElements;
 public class InventoryWindow : SideMenu
 {
     [SerializeField] private VisualTreeAsset inventoryItem;
-    [SerializeField] private Items inventory;
 
-    // private VisualElement _root;
     private VisualElement _inventoryItemsContainer;
 
     private void Start()
     {
-        // Root = GetComponent<UIDocument>().rootVisualElement;
         _inventoryItemsContainer = Root.Q<VisualElement>("inventory-item-container");
 
         BuildInventory();
@@ -22,7 +19,7 @@ public class InventoryWindow : SideMenu
 
     private void BuildInventory()
     {
-        foreach (var item in inventory.items)
+        foreach (var item in LevelManager.Instance.pd.Inventory.itemList)
         {
             VisualElement slot = inventoryItem.Instantiate();
             _inventoryItemsContainer.Add(slot);

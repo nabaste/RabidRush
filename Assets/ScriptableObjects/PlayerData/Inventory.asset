@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d6498b67e64a069bdb8d58f889f877, type: 3}
-  m_Name: Player Data
+  m_Script: {fileID: 11500000, guid: b6b159579530c403ab8adecc06344f62, type: 3}
+  m_Name: Inventory
   m_EditorClassIdentifier: 
-  playerName: Nahbaste
-  kartAmount: 160
-  level: 1
-  inventory: {fileID: 11400000, guid: 892388d5de13e4aa593ea9cd463b0bd6, type: 2}
+  itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

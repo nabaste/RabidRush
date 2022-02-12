@@ -6,12 +6,10 @@ using UnityEngine.UIElements;
 
 public class KartCounter : SideMenu
 {
-    [SerializeField] private PlayerData pd;
     private Label kartAmount;
 
     private void Start()
     {
-        // Root = GetComponent<UIDocument>().rootVisualElement;
         
         kartAmount = Root.Q<Label>("kart-amount-number");
         Refresh();
@@ -19,6 +17,6 @@ public class KartCounter : SideMenu
 
     public void Refresh()
     {
-        kartAmount.text = pd.KartAmount.ToString();
+        kartAmount.text = LevelManager.Instance.money.ToString();
     }
 }

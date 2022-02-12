@@ -16,5 +16,11 @@ namespace RabidRush.ScriptableObjects
         public List<float> LootTimes => lootTimes;
         [SerializeField] private int[] budgets;
         public int[] Budgets => budgets;
+        [SerializeField] private int startingKarts;
+        public int StartingKarts => startingKarts;
+        [SerializeField] private int startingLives;
+        public int StartingLives => startingLives;
+        [SerializeField] private ItemList availableItems;
+        public ItemList AvailableItems => availableItems;
     }
 }

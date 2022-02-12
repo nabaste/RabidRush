@@ -292,10 +292,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelList: {fileID: 11400000, guid: 37ce122ad2722492e8c5659828928e04, type: 2}
   levelData: {fileID: 11400000, guid: 2da9177bcff074e7c8935c38e8e3bf43, type: 2}
+  pd: {fileID: 11400000, guid: cf685bc14f1d948a5928043b1d7cf8e8, type: 2}
   money: 200
   livesLeft: 20
   lm: {fileID: 0}
-  lootOptions: []
 --- !u!4 &364688145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2901036252207647986, guid: 44cf8f769cdea4520bf087817c76b011, type: 3}
@@ -520,7 +520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryItem: {fileID: 9197481963319205126, guid: e79a04393d5e947c8aebc6c70e255956, type: 3}
-  inventory: {fileID: 11400000, guid: 892388d5de13e4aa593ea9cd463b0bd6, type: 2}
 --- !u!1 &1092974691
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,7 +745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a5ca3838774cb0ac1406111a098a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pd: {fileID: 11400000, guid: cf685bc14f1d948a5928043b1d7cf8e8, type: 2}
 --- !u!1 &1266544151
 GameObject:
   m_ObjectHideFlags: 0

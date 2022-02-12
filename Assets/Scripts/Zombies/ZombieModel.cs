@@ -59,7 +59,7 @@ namespace RabidRush.Zombies
 
         private void HitPlayer()
         {
-            LevelManager.Instance.LivesLeft--;
+            LevelManager.Instance.livesLeft--;
         }
     }
 }
