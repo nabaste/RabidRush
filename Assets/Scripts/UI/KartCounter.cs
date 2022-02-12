@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class KartCounter : UpperMenu
+public class KartCounter : SideMenu
 {
     [SerializeField] private PlayerData pd;
     private Label kartAmount;
 
-    private void OnEnable()
+    private void Start()
     {
-        Root = GetComponent<UIDocument>().rootVisualElement;
+        // Root = GetComponent<UIDocument>().rootVisualElement;
         
         kartAmount = Root.Q<Label>("kart-amount-number");
         Refresh();

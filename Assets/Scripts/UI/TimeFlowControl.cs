@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class TimeFlowControl : UpperMenu
+public class TimeFlowControl : SideMenu
 {
     private Button _menuButton;
     private Button _playPauseButton;
     private Button _ffButton;
 
-    public void OnEnable()
+    public void Start()
     {
-        Root = GetComponent<UIDocument>().rootVisualElement;
         
         _menuButton = Root.Q<Button>("menu-button");
         _playPauseButton = Root.Q<Button>("play-pause-button");

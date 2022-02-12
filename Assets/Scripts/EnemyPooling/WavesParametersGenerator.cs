@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RabidRush.ScriptableObjects;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class WavesParametersGenerator : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class WavesParametersGenerator : MonoBehaviour
     private ZombiePool _zp;
     private float _budget;
 
-    private List<float> times = new List<float>();
+    private List<ZombieSpawner> spawners = new List<ZombieSpawner>();
 
     private void Awake()
     {
@@ -24,20 +25,7 @@ public class WavesParametersGenerator : MonoBehaviour
             _ => _budget
         };
         CalculateAmounts();
-    }
 
-    private void Start()
-    {
-        // _zp.CreatePoolObjects();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _zp.CreatePoolObjects();
-            Make();
-        }
     }
 
     private void CalculateAmounts()
@@ -73,6 +61,8 @@ public class WavesParametersGenerator : MonoBehaviour
 
             var extra = RandomLootGenerator.Roll(chances);
         }
+        _zp.CreatePoolObjects();
+        CreateSpawners();
     }
 
     private List<float> CalculateTimes(int numberOfWaves, int zombie)
@@ -89,34 +79,42 @@ public class WavesParametersGenerator : MonoBehaviour
         return result;
     }
 
-    private void Make()
+    private void CreateSpawners()
     {
         for (int i = 0; i < ld.StartLocations.Length; i++)
         {
-            for (int j = 0; j < zl.zombies.Count; j++)
+            foreach (var t in zl.zombies)
             {
-                CreateSpawner(ld.StartLocations[i].Position, zl.zombies[j].Prefab.name + i, times);
+                var spawnerObject = new GameObject
+                {
+                    transform =
+                    {
+                        parent = transform,
+                        position = ld.StartLocations[i].Position
+                    },
+                    name = t.Prefab.name + i + "Spawner"
+                };
+                var spawner = spawnerObject.AddComponent<ZombieSpawner>();
+                spawner.pool = GetComponent<ZombiePool>();
+                spawner.spawnPosition = ld.StartLocations[i].Position;
+                spawner.poolTag = t.Prefab.name + i;
+                spawner.spacing = new WaitForSeconds(t.InnerGroupingTimeSeparation);
+                spawner.groupSize = t.Grouping;
+                
+                spawners.Add(spawner);
+
+                //Disable the spawner. It will be enabled when the player hits START
+                spawner.enabled = false;
             }
         }
     }
 
-    private void CreateSpawner(Vector3 pos, string name, List<float> times)
+    public void EnableSpawners()
     {
-        var origin = new GameObject
+        foreach (var spawner in spawners)
         {
-            transform =
-            {
-                parent = transform,
-                position = pos
-            },
-            name = name
-        };
-        var spawner = origin.AddComponent<ZombieSpawner>();
-        spawner.pool = GetComponent<ZombiePool>();
-        spawner.spawnPosition = pos;
-        spawner.poolTag = name;
-
-        //Disable the spawner. It will be enabled when the player hits START
-        // spawner.enabled = false;
+            spawner.enabled = true;
+        }
     }
+
 }

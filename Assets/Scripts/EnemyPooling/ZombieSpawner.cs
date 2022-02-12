@@ -7,34 +7,36 @@ public class ZombieSpawner : MonoBehaviour
 {
     public ZombiePool pool;
     public string poolTag;
-    private List<float> _times;
-    private float _counter;
+    private List<float> _waveTimes;
 
     [NonSerialized] public Vector3 spawnPosition = new Vector3();
-
     
-    private int _presentWave = 0;
-
-
-    private void Awake()
-    {
-        _counter = 0;
-        // _times = pool.GetTimes(poolTag);
-    }
+    public WaitForSeconds spacing;
+    public int groupSize;
 
     private void Start()
     {
-        _times = pool.GetTimes(poolTag);
+        _waveTimes = pool.GetTimes(poolTag);
+
+        StartCoroutine(SpawnWave());
     }
 
-    private void Update()
+    private IEnumerator SpawnWave()
     {
-        _counter += Time.deltaTime;
+        foreach (var waveTime in _waveTimes)
+        {
+            yield return new WaitForSeconds(waveTime);
+            StartCoroutine(SpawnZombies());
+        }
+    }
 
-        if (_times.Count <= _presentWave ) return;
-        if (_counter < _times[_presentWave]) return;
-        _presentWave++;
-        var zombie = pool.GetObject(poolTag);
-        zombie.transform.position = spawnPosition;
+    private IEnumerator SpawnZombies()
+    {
+        for (int i = 0; i < groupSize; i++)
+        {
+            yield return spacing;
+            var zombie = pool.GetObject(poolTag);
+            zombie.transform.position = spawnPosition;
+        }
     }
 }

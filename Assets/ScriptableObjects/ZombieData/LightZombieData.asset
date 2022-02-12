@@ -20,7 +20,7 @@ MonoBehaviour:
   groupingVariance: 0
   poolingCost: 30
   innerGroupingTimeSeparation: 1
-  outerGroupingTimeSeparation: 4
+  outerGroupingTimeSeparation: 20
   timeSeparationVariance: 0.346
   prefab: {fileID: 373303476033960276, guid: 32e2f14b681294c2dba2805dc5a998de, type: 3}
   deathAnimationDuration: 0.4

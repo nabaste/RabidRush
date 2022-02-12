@@ -11,32 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelList levelList;
     public LevelData levelData;
     [SerializeField] private int money;
-    // [SerializeField] private UIHandler _ui;
-    public int Money
-    {
-        get
-        {
-            return money;
-        }
-        set
-        {
-            money = value;
-            // _ui.UpdateUI("money");
-        }
-    }
-    private int enemiesKilled = 0;
-    public int EnemiesKilled
-    {
-        get
-        {
-            return enemiesKilled;
-        }
-        set
-        {
-            enemiesKilled = value;
-            // _ui.UpdateUI("enemies");
-        }
-    }
+   
     [SerializeField] private int livesLeft;
     public int LivesLeft
     {
@@ -47,18 +22,8 @@ public class LevelManager : MonoBehaviour
         set
         {
             livesLeft = value;
-            // _ui.UpdateUI("lives");
         }
     }
-    // [SerializeField] private Controller controller;
-    // public Controller Controller
-    // {
-    //     get
-    //     {
-    //         return controller;
-    //     }
-    // }
-    public Action startOfWaves;
     [SerializeField] public LootManager lm;
     private Action loot1;
     private Action loot2;
@@ -84,7 +49,6 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        startOfWaves += () => Timer.Create(loot1, levelData.LootTimes[0], "FirstWave");
         loot1 += () => Debug.Log("loot 1");
         loot1 += () => Loot();
         loot1 += () => Timer.Create(loot2, levelData.LootTimes[1], "SecondWave");

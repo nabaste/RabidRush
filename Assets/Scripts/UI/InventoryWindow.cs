@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class InventoryWindow : MonoBehaviour
+public class InventoryWindow : SideMenu
 {
     [SerializeField] private VisualTreeAsset inventoryItem;
     [SerializeField] private Items inventory;
 
-    private VisualElement _root;
+    // private VisualElement _root;
     private VisualElement _inventoryItemsContainer;
 
-    private void OnEnable()
+    private void Start()
     {
-        _root = GetComponent<UIDocument>().rootVisualElement;
-        _inventoryItemsContainer = _root.Q<VisualElement>("inventory-item-container");
+        // Root = GetComponent<UIDocument>().rootVisualElement;
+        _inventoryItemsContainer = Root.Q<VisualElement>("inventory-item-container");
 
         BuildInventory();
     }

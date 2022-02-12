@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class SelectorButtons : UpperMenu
+public class SelectorButtons : SideMenu
 {
     private Button _inventoryButton;
     private Button _towerSelectionButton;
@@ -13,9 +13,8 @@ public class SelectorButtons : UpperMenu
     
    
 
-    private void OnEnable()
+    private void Start()
     {
-        Root = GetComponent<UIDocument>().rootVisualElement;
         
         _inventoryButton = Root.Q<Button>("inventory-button");
         _towerSelectionButton = Root.Q<Button>("towers-button");

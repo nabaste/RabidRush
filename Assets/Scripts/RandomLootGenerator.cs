@@ -5,10 +5,6 @@ using UnityEngine;
 
 public static class RandomLootGenerator 
 {
-    // public RandomLootGenerator()
-    // {
-        
-    // }
     public static Item Generate(Dictionary<Item, float> dict)
     {
         float max = 0;

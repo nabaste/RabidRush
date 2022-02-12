@@ -5,20 +5,18 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class TowerSelector : MonoBehaviour
+public class TowerSelector : SideMenu
 {
     [SerializeField] private VisualTreeAsset towerListItem;
     [SerializeField] private TowerList towers;
 
-    private VisualElement _root;
     private VisualElement _towerListContainer;
 
     private List<VisualElement> _instantiatedListItems = new List<VisualElement>();
 
-    private void OnEnable()
+    private void Start()
     {
-        _root = GetComponent<UIDocument>().rootVisualElement;
-        _towerListContainer = _root.Q<VisualElement>("tower-list");
+        _towerListContainer = Root.Q<VisualElement>("tower-list");
         
 
         BuildTowerList();

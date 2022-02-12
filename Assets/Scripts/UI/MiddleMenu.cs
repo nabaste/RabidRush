@@ -2,22 +2,20 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class MiddleMenu : MonoBehaviour
+public class MiddleMenu : SideMenu
 {
-    private VisualElement _root;
     private VisualElement _middleMenuOnDisplay;
     private VisualElement _inspector;
 
     private Label _unitName;
     private Label _unitStats;
 
-    private void OnEnable()
+    private void Start()
     {
-        _root = GetComponent<UIDocument>().rootVisualElement;
-        _inspector = _root.Q<VisualElement>("inspector");
+        _inspector = Root.Q<VisualElement>("inspector");
 
-        _unitName = _root.Q<Label>("inspector-unit-name");
-        _unitStats = _root.Q<Label>("inspector-unit-stats");
+        _unitName = Root.Q<Label>("inspector-unit-name");
+        _unitStats = Root.Q<Label>("inspector-unit-stats");
     }
 
     public void MenuChange(VisualElement menu, bool hide)

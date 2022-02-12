@@ -1,17 +1,23 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
-public class TimeCounter : MonoBehaviour
+
+public class TimeCounter : SideMenu
 {
-    private VisualElement Root;
     private Label _timerForeground;
 
-    private void OnEnable()
+    public EventCallback<ClickEvent> startEv;
+    [SerializeField] private WavesParametersGenerator wpg;
+
+    private void Start()
     {
-        Root = GetComponent<UIDocument>().rootVisualElement;
+
+        startEv += evt => AnimateTimer();
+        startEv += evt => wpg.EnableSpawners();
 
         _timerForeground = Root.Q<Label>("timer-foreground");
-        _timerForeground.RegisterCallback<ClickEvent>(ev => AnimateTimer());
+        _timerForeground.RegisterCallback(startEv);
     }
 
     private void AnimateTimer()
