@@ -37,8 +37,6 @@ public class LootManager : MonoBehaviour
         availableLoots.Remove(item2);
         result.Add(item2);
 
-        Time.timeScale = 0;
-
         return result;
     }
 }

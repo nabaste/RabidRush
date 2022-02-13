@@ -24,7 +24,7 @@ public class MiddleMenu : SideMenu
 
         for (int i = 0; i < LevelManager.Instance.lootEvents.Count; i++)
         {
-            LevelManager.Instance.lootEvents[i] += list => MenuChange(_lootSelection, false);    
+            LevelManager.Instance.lootEvents[i] += list => MenuChange(_lootSelection, true);    
         }
         
         
@@ -32,10 +32,12 @@ public class MiddleMenu : SideMenu
 
     public void MenuChange(VisualElement menu, bool hide)
     {
+        if (_middleMenuOnDisplay == _lootSelection && menu != _lootSelection) return;
         if (_middleMenuOnDisplay != null) _middleMenuOnDisplay.style.display = DisplayStyle.None;
         if (_middleMenuOnDisplay == menu && hide)
         {
-            _middleMenuOnDisplay = null;
+            // _middleMenuOnDisplay = null;
+            HideMiddleMenu();
             return;
         }
 
@@ -52,5 +54,11 @@ public class MiddleMenu : SideMenu
         _unitStats.text = inspected.GetLife().ToString();
         Debug.Log(inspected.GetName());
         MenuChange(_inspector, false);
+    }
+
+    public void HideMiddleMenu()
+    {
+        _middleMenuOnDisplay.style.display = DisplayStyle.None;
+        _middleMenuOnDisplay = null;
     }
 }
