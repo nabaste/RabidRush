@@ -54,9 +54,9 @@ public class WavesParametersGenerator : MonoBehaviour
                 _zp.pools.Add(objectsPools);
 
 
-                Debug.Log($"En la posición número {i}, salen {groupAmount} grupos de {zl.zombies[j].Prefab.name}. " +
-                          $"Cada grupo es de {zl.zombies[j].Grouping} miembros. " +
-                          $"Se gastó {zl.zombies[j].PoolingCost * zl.zombies[j].Grouping * groupAmount} del budget");
+                // Debug.Log($"En la posición número {i}, salen {groupAmount} grupos de {zl.zombies[j].Prefab.name}. " +
+                //           $"Cada grupo es de {zl.zombies[j].Grouping} miembros. " +
+                //           $"Se gastó {zl.zombies[j].PoolingCost * zl.zombies[j].Grouping * groupAmount} del budget");
             }
 
             var extra = RandomLootGenerator.Roll(chances);

@@ -20,7 +20,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a0d82423fc2a464090024a8bec3fe66, type: 2}
   - {fileID: 11400000, guid: 5b094e6d18b6b4f0c87427aa724a2c52, type: 2}
   endPosition: {x: 0, y: 0, z: -15}
-  lootTimes: []
+  lootTimes:
+  - 2
+  - 4
+  - 6
   budgets: d0070000ac0d000070170000
   startingKarts: 200
   startingLives: 20

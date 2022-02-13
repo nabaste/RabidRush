@@ -13,13 +13,16 @@ namespace RabidRush.ScriptableObjects
         public float[] MediumLootRates => mediumLootRates;
         [SerializeField] private float[] hardLootRates;
         public float[] HardLootRates => hardLootRates;
-        public List<float[]> LootRates { get; } = new List<float[]>();
+        public List<float[]> LootRates { get; private set; } 
 
-        private void Start()
+        private void Awake()
         {
-            LootRates.Add(easyLootRates);
-            LootRates.Add(mediumLootRates);
-            LootRates.Add(hardLootRates);
+            LootRates = new List<float[]>
+            {
+                EasyLootRates,
+                MediumLootRates,
+                HardLootRates
+            };
         }
     }
 }

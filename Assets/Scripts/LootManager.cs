@@ -1,38 +1,21 @@
 using System.Collections.Generic;
 using RabidRush.ScriptableObjects;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class LootManager : MonoBehaviour
 {
     private Dictionary<Item, float> availableLoots = new Dictionary<Item, float>();
-    public UnityAction OnItem0Selected;
-    public UnityAction OnItem1Selected;
-    public UnityAction OnItem2Selected;
-    private void Awake()
-    {
-        // OnItem0Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[0]);
-        // OnItem1Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[1]);
-        // OnItem2Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[2]);
-    }
+
     private void SaveItem(Item item, float[] rates)
     {
-        float rate = 0;
-        switch (item.Rarity)
+        float rate = item.Rarity switch
         {
-            case ItemRarity.normal:
-                rate = rates[0];
-                break;
-            case ItemRarity.difficult:
-                rate = rates[1];
-                break;
-            case ItemRarity.rare:
-                rate = rates[2];
-                break;
-            case ItemRarity.epic:
-                rate = rates[3];
-                break;
-        }
+            ItemRarity.normal => rates[0],
+            ItemRarity.difficult => rates[1],
+            ItemRarity.rare => rates[2],
+            ItemRarity.epic => rates[3],
+            _ => 0
+        };
         availableLoots.Add(item, rate);
     }
     public List<Item> DrawThreeItems(List<Item> levelLoots, float[] rates)

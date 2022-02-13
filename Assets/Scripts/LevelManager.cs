@@ -11,13 +11,16 @@ public class LevelManager : MonoBehaviour
     public LevelData levelData;
     [SerializeField] public PlayerData pd;
     [SerializeField] public GameData gd;
-    public int money;
 
+    public int money;
     public int livesLeft;
 
     [SerializeField] public LootManager lm;
-    private Action loot1;
-    private Action loot2;
+    public event Action<List<Item>> Loot0;
+    public event Action<List<Item>> Loot1;
+    public event Action<List<Item>> Loot2;
+    
+    public List<Action<List<Item>>> lootEvents;
 
     #region Singleton
 
@@ -42,38 +45,45 @@ public class LevelManager : MonoBehaviour
     {
         _instance = this;
         levelData = levelList.levels[SceneManager.GetActiveScene().buildIndex];
+        
+        lootEvents = new List<Action<List<Item>>>(levelData.LootTimes.Count)
+        {
+            Loot0,
+            Loot1,
+            Loot2
+        };
     }
 
     private void Start()
     {
         money = levelData.StartingKarts;
         livesLeft = levelData.StartingLives;
-        
-        loot1 += () => Debug.Log("loot 1");
-        loot1 += () => Loot();
-        loot1 += () => Timer.Create(loot2, levelData.LootTimes[1], "SecondWave");
-        loot2 += () => Debug.Log("loot 2");
-        loot2 += () => Loot();
+
+        StartCoroutine(SearchingForLoot());
     }
 
-    private void Loot()
+    private IEnumerator SearchingForLoot()
     {
-        lm.DrawThreeItems(levelData.AvailableItems.itemList, gd.LootRates[(int) pd.Level]);
-        // _ui.InstantiateLootMenu();
+        for (int i = 0; i < levelData.LootTimes.Count; i++)
+        {
+            yield return new WaitForSeconds(levelData.LootTimes[i]);
+            lootEvents[i].Invoke(GetLoot());
+        }
     }
-    
-    private void SaveSelectedItem(Item item)
+
+    private List<Item> GetLoot()
     {
-        pd.Inventory.itemList.Add(item);
+        return lm.DrawThreeItems(levelData.AvailableItems.itemList, gd.MediumLootRates); 
     }
 
     private void OnLoose()
     {
+        //Show loosing screen
         //set highscores
     }
 
     private void OnWin()
     {
-        
+        //Show winning screen
     }
 }
