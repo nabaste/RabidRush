@@ -59,6 +59,10 @@ public class LevelManager : MonoBehaviour
         money = levelData.StartingKarts;
         livesLeft = levelData.StartingLives;
 
+    }
+
+    public void StartLootCountdown()
+    {
         StartCoroutine(SearchingForLoot());
     }
 
@@ -73,7 +77,10 @@ public class LevelManager : MonoBehaviour
 
     private List<Item> GetLoot()
     {
-        return lm.DrawThreeItems(levelData.AvailableItems.itemList, gd.MediumLootRates); 
+        var lootOptions = new List<Item>();
+        // lootOptions.Clear();
+        lootOptions = lm.DrawThreeItems(levelData.AvailableItems.itemList, gd.MediumLootRates);
+        return lootOptions;
     }
 
     private void OnLoose()

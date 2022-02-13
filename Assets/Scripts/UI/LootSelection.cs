@@ -9,6 +9,8 @@ public class LootSelection : SideMenu
     [SerializeField] private VisualTreeAsset lootListItem;
     private VisualElement _lootListContainer;
 
+    [SerializeField] private MiddleMenu mm;
+
 
     private void Start()
     {
@@ -21,12 +23,22 @@ public class LootSelection : SideMenu
 
     private void BuildLootList(List<Item> loots)
     {
+        Time.timeScale = 0;
         foreach (var loot in loots)
         {
             VisualElement listItem = lootListItem.Instantiate();
             _lootListContainer.Add(listItem);
+            listItem.RegisterCallback<ClickEvent>(ev => OnItemPick(loot));
             var text = listItem.Q<Label>("loot-list-item-label");
             text.text = loot.ItemName;
         }
+    }
+
+    private void OnItemPick(Item selected) 
+    {
+        LevelManager.Instance.pd.Inventory.itemList.Add(selected);
+        mm.HideMiddleMenu();
+        _lootListContainer.Clear();
+        Time.timeScale = 1;
     }
 }

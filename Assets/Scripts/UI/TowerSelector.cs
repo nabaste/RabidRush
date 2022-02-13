@@ -12,7 +12,6 @@ public class TowerSelector : SideMenu
 
     private VisualElement _towerListContainer;
 
-    // private List<VisualElement> _instantiatedListItems = new List<VisualElement>();
 
     private void Start()
     {
