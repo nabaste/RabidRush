@@ -6,12 +6,6 @@ using UnityEngine.Events;
 public class LootManager : MonoBehaviour
 {
     private Dictionary<Item, float> availableLoots = new Dictionary<Item, float>();
-    [SerializeField] float normalRarityRate;
-    [SerializeField] float difficultRarityRate;
-    [SerializeField] float rareRarityRate;
-    [SerializeField] float epicRarityRate;
-    [SerializeField] private ItemList _existing;
-    [SerializeField] private ItemList _inventory;
     public UnityAction OnItem0Selected;
     public UnityAction OnItem1Selected;
     public UnityAction OnItem2Selected;
@@ -21,33 +15,33 @@ public class LootManager : MonoBehaviour
         // OnItem1Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[1]);
         // OnItem2Selected += () => SaveSelectedItem(LevelManager.Instance.lootOptions[2]);
     }
-    private void SaveItem(Item item)
+    private void SaveItem(Item item, float[] rates)
     {
         float rate = 0;
         switch (item.Rarity)
         {
             case ItemRarity.normal:
-                rate = normalRarityRate;
+                rate = rates[0];
                 break;
             case ItemRarity.difficult:
-                rate = difficultRarityRate;
+                rate = rates[1];
                 break;
             case ItemRarity.rare:
-                rate = rareRarityRate;
+                rate = rates[2];
                 break;
             case ItemRarity.epic:
-                rate = epicRarityRate;
+                rate = rates[3];
                 break;
         }
         availableLoots.Add(item, rate);
     }
-    public List<Item> DrawThreeItems()
+    public List<Item> DrawThreeItems(List<Item> levelLoots, float[] rates)
     {
         availableLoots.Clear();
-        // foreach (var item in _existing.items)
-        // {
-        //     SaveItem(item);
-        // }
+        foreach (var item in levelLoots)
+        {
+            SaveItem(item, rates);
+        }
         List<Item> result = new List<Item>();
 
         Item item0 = RandomLootGenerator.Generate(availableLoots);
@@ -63,9 +57,5 @@ public class LootManager : MonoBehaviour
         Time.timeScale = 0;
 
         return result;
-    }
-    private void SaveSelectedItem(Item item)
-    {
-        // _inventory.items.Add(item);
     }
 }

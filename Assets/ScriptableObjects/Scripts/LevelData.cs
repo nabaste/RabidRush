@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RabidRush.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Level Data", menuName = "ScriptableObjects/Levels/Level Data ", order = 1)]
+    [CreateAssetMenu(fileName = "Level Data", menuName = "Scriptable Objects/Levels/Level Data ", order = 1)]
     public class LevelData : ScriptableObject
     {
         // [SerializeField] private List<Vector3> startLocations = new List<Vector3>();

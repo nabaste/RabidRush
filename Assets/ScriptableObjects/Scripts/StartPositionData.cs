@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RabidRush.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Start Position Data", menuName = "ScriptableObjects/Levels/Start Position Data",
+    [CreateAssetMenu(fileName = "Start Position Data", menuName = "Scriptable Objects/Levels/Start Position Data",
         order = 1)]
     public class StartPositionData : ScriptableObject
     {

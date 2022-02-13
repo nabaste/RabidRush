@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelList levelList;
     public LevelData levelData;
     [SerializeField] public PlayerData pd;
+    [SerializeField] public GameData gd;
     public int money;
 
     public int livesLeft;
@@ -57,12 +58,22 @@ public class LevelManager : MonoBehaviour
 
     private void Loot()
     {
-         // = lm.DrawThreeItems();
+        lm.DrawThreeItems(levelData.AvailableItems.itemList, gd.LootRates[(int) pd.Level]);
         // _ui.InstantiateLootMenu();
+    }
+    
+    private void SaveSelectedItem(Item item)
+    {
+        pd.Inventory.itemList.Add(item);
     }
 
     private void OnLoose()
     {
         //set highscores
+    }
+
+    private void OnWin()
+    {
+        
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RabidRush.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObjects/Items/Item", order = 0)]
+    [CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Objects/Items/Item", order = 5)]
     public class Item : ScriptableObject
     {
         [SerializeField] private string itemName;

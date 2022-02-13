@@ -22,3 +22,6 @@ MonoBehaviour:
   endPosition: {x: 0, y: 0, z: -15}
   lootTimes: []
   budgets: d0070000ac0d000070170000
+  startingKarts: 200
+  startingLives: 20
+  availableItems: {fileID: 11400000, guid: e73dc223aa1444bcd97cafac647217d8, type: 2}

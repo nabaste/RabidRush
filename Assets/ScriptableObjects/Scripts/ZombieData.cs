@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RabidRush.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Zombie Data", menuName = "ScriptableObjects/Zombies/Zombie Stats Data", order = 0)]
+    [CreateAssetMenu(fileName = "Zombie Data", menuName = "Scriptable Objects/Zombies/Zombie Stats Data", order = 0)]
     public class ZombieData : ScriptableObject
     {
         [Header("Base Stats")]

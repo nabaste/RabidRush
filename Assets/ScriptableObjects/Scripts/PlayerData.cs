@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RabidRush.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Player Data", menuName = "ScriptableObjects/Players/Player Data", order = 0)]
+    [CreateAssetMenu(fileName = "Player Data", menuName = "Scriptable Objects/Players/Player Data", order = 0)]
     [Serializable]
     public class PlayerData : ScriptableObject
     {

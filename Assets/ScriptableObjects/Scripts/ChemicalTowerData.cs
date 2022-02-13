@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RabidRush.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Chemical Tower Data", menuName = "ScriptableObjects/Towers/Chemical Tower Stats Data", order = 2)]
+    [CreateAssetMenu(fileName = "Chemical Tower Data", menuName = "Scriptable Objects/Towers/Chemical Tower Stats Data", order = 2)]
     public class ChemicalTowerData : TowerData
     {
         [Header("Chemical Stats")]

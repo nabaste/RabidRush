@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RabidRush.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Tower Data", menuName = "ScriptableObjects/Towers/Tower Stats Data", order = 1)]
+    [CreateAssetMenu(fileName = "Tower Data", menuName = "Scriptable Objects/Towers/Tower Stats Data", order = 1)]
     public class TowerData : ScriptableObject
     {
         #region Display
