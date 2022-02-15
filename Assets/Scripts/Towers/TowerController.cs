@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using RabidRush.Zombies;
+using UnityEngine.SocialPlatforms;
 
 namespace RabidRush.Towers
 {
@@ -26,7 +27,7 @@ namespace RabidRush.Towers
             OnShoot = Shoot;
 
             _counter = model.cooldown;
-            
+
             placementManager.Build(1f, 1f, "Terrain");
         }
 
@@ -40,7 +41,7 @@ namespace RabidRush.Towers
             _counter -= Time.deltaTime;
             _enemiesInSight = MultiTargetLineOfSight();
 
-            if (_counter < 0) OnShoot?.Invoke();
+            if (_counter <= 0 && _enemiesInSight.Count > 0) OnShoot?.Invoke();
         }
 
         protected virtual void Shoot()
@@ -54,21 +55,26 @@ namespace RabidRush.Towers
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, model.range, _zombieLayerMask);
             List<ZombieController> result = new List<ZombieController>();
-            if (colliders.Length == 0)
-            {
-                return result;
-            }
+            if (colliders.Length == 0) return result;
 
+            Debug.Log("Collided");
             Vector3 front = transform.forward;
 
-            foreach (var enemy in colliders)
-            {
-                Vector3 posDifference = enemy.transform.position - transform.position;
-                if (!IsInVisionAngle(posDifference, front)) continue;
-                float distance = posDifference.magnitude;
-                if (!IsInView(posDifference.normalized, model.range, _obstacleLayerMask)) continue;
-                result.Add(enemy.gameObject.GetComponent<ZombieController>());
-            }
+            // foreach (var enemy in colliders)
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    var current = colliders[i];
+                    Vector3 posDifference = current.transform.position - transform.position;
+                    if (!IsInVisionAngle(posDifference, front)) continue;
+                    // float distance = posDifference.magnitude;
+                    Debug.Log(current + "gotchu");
+                    if (!IsInView(posDifference.normalized, model.range, _obstacleLayerMask)) continue;
+                    if (!current.gameObject.TryGetComponent(out ZombieController zc)) return new List<ZombieController>();
+                    result.Add(zc);
+                    Debug.Log(current);
+                }
+          
+
             ConsiderPrioritaryTarget(result);
             model.LookAtTarget(result[0].transform);
             return result;

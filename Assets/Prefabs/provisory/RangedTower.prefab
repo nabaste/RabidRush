@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2000465032}
   - component: {fileID: 1572238666704583177}
   - component: {fileID: 4232032265396344233}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: RangedTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

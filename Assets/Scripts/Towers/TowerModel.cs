@@ -75,7 +75,7 @@ namespace RabidRush.Towers
 
         private void PayForTower()
         {
-            playerData.KartAmount -= towerData.Cost;
+            LevelManager.Instance.KartAmount -= towerData.Cost;
         }
 
         #region IInspectable

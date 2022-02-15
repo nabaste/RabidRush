@@ -6,17 +6,18 @@ using UnityEngine.UIElements;
 
 public class KartCounter : SideMenu
 {
-    private Label kartAmount;
+    private Label _kartAmount;
 
-    private void Start()
+    private void OnEnable()
     {
-        
-        kartAmount = Root.Q<Label>("kart-amount-number");
+        Root = GetComponentInParent<UIDocument>().rootVisualElement;
+        _kartAmount = Root.Q<Label>("kart-amount-number");
         Refresh();
     }
 
     public void Refresh()
     {
-        kartAmount.text = LevelManager.Instance.money.ToString();
+        _kartAmount.text = LevelManager.Instance.KartAmount.ToString();
     }
+    
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Chloe
   towerIcon: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 3859755504713009330, guid: 5e64642c8aed245b6a24899f51cc464e, type: 3}
   life: 20
   range: 20
   damage: 10

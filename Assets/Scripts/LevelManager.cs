@@ -12,7 +12,17 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public PlayerData pd;
     [SerializeField] public GameData gd;
 
-    public int money;
+    [SerializeField] private KartCounter kc;
+    private int _kartAmount;
+    public int KartAmount
+    {
+        get => _kartAmount;
+        set
+        {
+            _kartAmount = value;
+            kc.Refresh();
+        }
+    }
     public int livesLeft;
 
     [SerializeField] public LootManager lm;
@@ -56,9 +66,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        money = levelData.StartingKarts;
+        KartAmount = levelData.StartingKarts;
         livesLeft = levelData.StartingLives;
-
     }
 
     public void StartLootCountdown()

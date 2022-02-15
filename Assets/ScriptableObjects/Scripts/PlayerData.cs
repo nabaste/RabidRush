@@ -14,13 +14,6 @@ namespace RabidRush.ScriptableObjects
             set => playerName = value;
         }
 
-        [SerializeField] private int kartAmount;
-        public int KartAmount
-        {
-            get => kartAmount;
-            set => kartAmount = value;
-        }
-
         [SerializeField] private DifficultyLevel level;
 
         public DifficultyLevel Level

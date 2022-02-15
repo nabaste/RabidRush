@@ -9,7 +9,7 @@ public class TowerSelector : SideMenu
 {
     [SerializeField] private VisualTreeAsset towerListItem;
     [SerializeField] private TowerList towers;
-
+    [SerializeField] private Transform towerContainer;
     private VisualElement _towerListContainer;
 
 
@@ -27,8 +27,14 @@ public class TowerSelector : SideMenu
         {
             VisualElement listItem = towerListItem.Instantiate();
             _towerListContainer.Add(listItem);
+            listItem.RegisterCallback<ClickEvent>(evt => PlaceTower(t));
             var text = listItem.Q<Label>("tower-list-item-label");
             text.text = t.TowerName;
         }
+    }
+
+    private void PlaceTower(TowerData tower)
+    {
+        Instantiate(tower.Prefab, towerContainer);
     }
 }
