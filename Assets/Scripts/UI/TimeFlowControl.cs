@@ -8,7 +8,6 @@ public class TimeFlowControl : SideMenu
     private Button _ffButton;
 
     [SerializeField] private VisualElement pauseMenu;
-
     public void Start()
     {
         

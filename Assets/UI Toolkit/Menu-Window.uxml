@@ -1,8 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="Menu-Window" style="background-color: rgba(15, 43, 44, 0.9); padding-left: 24px; padding-right: 24px; padding-top: 24px; padding-bottom: 24px;">
-        <ui:Label text="Menu" display-tooltip-when-elided="true" name="menu-window-title" style="-unity-text-align: upper-center;" />
-        <ui:Button text="Resume" display-tooltip-when-elided="true" name="menu-window-resume-button" />
-        <ui:Button text="Options" display-tooltip-when-elided="true" name="menu-window-options-button" />
-        <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="menu-window-mainmenu-button" />
+    <Style src="BaseStyles.uss" />
+    <ui:VisualElement name="Menu-Window" style="background-color: rgb(15, 43, 44); padding-left: 24px; padding-right: 24px; padding-top: 24px; padding-bottom: 24px; align-items: center;">
+        <ui:Label text="Menu" display-tooltip-when-elided="true" name="menu-window-title" style="-unity-text-align: upper-center; font-size: 45px; -unity-font-style: bold; color: rgb(229, 229, 229);" />
+        <ui:Button text="Resume" display-tooltip-when-elided="true" name="menu-window-resume-button" class="pause-menu-button" />
+        <ui:Button text="Options" display-tooltip-when-elided="true" name="menu-window-options-button" class="pause-menu-button" />
+        <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="menu-window-mainmenu-button" class="pause-menu-button" />
     </ui:VisualElement>
 </ui:UXML>

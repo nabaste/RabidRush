@@ -47,7 +47,7 @@ namespace RabidRush.Towers
         protected virtual void Shoot()
         {
             _enemiesInSight[0]?.GetDamage(model.damage, kindOfDamage.physical);
-            Debug.Log($"Shot {_enemiesInSight[0].name}");
+            // Debug.Log($"Shot {_enemiesInSight[0].name}");
             _counter = model.cooldown;
         }
 
@@ -57,23 +57,20 @@ namespace RabidRush.Towers
             List<ZombieController> result = new List<ZombieController>();
             if (colliders.Length == 0) return result;
 
-            Debug.Log("Collided");
-            Vector3 front = transform.forward;
 
-            // foreach (var enemy in colliders)
-                for (int i = 0; i < colliders.Length; i++)
-                {
-                    var current = colliders[i];
-                    Vector3 posDifference = current.transform.position - transform.position;
-                    if (!IsInVisionAngle(posDifference, front)) continue;
-                    // float distance = posDifference.magnitude;
-                    Debug.Log(current + "gotchu");
-                    if (!IsInView(posDifference.normalized, model.range, _obstacleLayerMask)) continue;
-                    if (!current.gameObject.TryGetComponent(out ZombieController zc)) return new List<ZombieController>();
-                    result.Add(zc);
-                    Debug.Log(current);
-                }
-          
+            Vector3 front = transform.forward;
+            
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                var current = colliders[i];
+                Vector3 posDifference = current.transform.position - transform.position;
+                // if (!IsInVisionAngle(posDifference, front)) continue;
+                // float distance = posDifference.magnitude;
+                if (!IsInView(posDifference.normalized, model.range, _obstacleLayerMask)) continue;
+                if (!current.gameObject.TryGetComponent(out ZombieController zc)) return new List<ZombieController>();
+                result.Add(zc);
+            }
+
 
             ConsiderPrioritaryTarget(result);
             model.LookAtTarget(result[0].transform);
