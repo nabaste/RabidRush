@@ -110,8 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379740bace6a740ef8f8dbdeeb6fbb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 50
-  cost: 15
+  bd: {fileID: 11400000, guid: 9339cdcedf404444e96c02d817805395, type: 2}
   placementManager: {fileID: 409333309}
 --- !u!208 &-8365475177222644893
 NavMeshObstacle:

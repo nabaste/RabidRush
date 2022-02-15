@@ -1,14 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RabidRush.ScriptableObjects;
 using RabidRush.Towers;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
 {
-    [SerializeField] private float life;
-    [SerializeField] private int cost;
+    [SerializeField] private BarricadeData bd;
+    private float _life;
     private bool _placed = false;
     private BoxCollider _collider;
     private NavMeshObstacle _navMeshObstacle;
@@ -24,6 +25,9 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
         
         placementManager.Build(2, 1, "Walkway");
         placementManager.OnPlacement += OnPlacementHandler;
+        placementManager.OnPlacement += PayForBarricade;
+
+        _life = bd.Life;
     }
 
     private void OnPlacementHandler()
@@ -31,6 +35,11 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
         _collider.enabled = true;
         _navMeshObstacle.enabled = true;
         _placed = true;
+    }
+
+    private void PayForBarricade()
+    {
+        LevelManager.Instance.KartAmount -= bd.Cost;
     }
 
     private void Update()
@@ -47,16 +56,16 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
     }
     public void GetDamage(float dmg, kindOfDamage kind, float pace = 0, float duration = 0)
     {
-        life -= dmg;
+        _life -= dmg;
         CheckIfDestroyed();
     }
     public int GetCost()
     {
-        return cost;
+        return bd.Cost;
     }
     private void CheckIfDestroyed()
     {
-        if (life > 0) return;
+        if (_life > 0) return;
         Destroy(gameObject);
         OnDestroyed?.Invoke();
     }
@@ -68,7 +77,7 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
 
     public float GetLife()
     {
-        return life;
+        return _life;
     }
 
     public Dictionary<string, float> GetStats()

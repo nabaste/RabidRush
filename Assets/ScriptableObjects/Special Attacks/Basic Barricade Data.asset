@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f517087dda4b038461845003097fae, type: 3}
+  m_Name: Basic Barricade Data
+  m_EditorClassIdentifier: 
+  life: 100
+  cost: 45
+  prefab: {fileID: 3366054433783376244, guid: 6413c3819048c404390b0b8e522d7f2e, type: 3}
