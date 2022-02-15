@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Menu-Window" style="background-color: rgba(15, 43, 44, 0.9); padding-left: 24px; padding-right: 24px; padding-top: 24px; padding-bottom: 24px;">
+        <ui:Label text="Menu" display-tooltip-when-elided="true" name="menu-window-title" style="-unity-text-align: upper-center;" />
+        <ui:Button text="Resume" display-tooltip-when-elided="true" name="menu-window-resume-button" />
+        <ui:Button text="Options" display-tooltip-when-elided="true" name="menu-window-options-button" />
+        <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="menu-window-mainmenu-button" />
+    </ui:VisualElement>
+</ui:UXML>
