@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using RabidRush.ScriptableObjects;
 using UnityEngine;
-
 namespace RabidRush.Towers
 {
     public class TowerModel : MonoBehaviour, IInspectable
     {
         [SerializeField] public TowerData towerData;
         [SerializeField] private LevelData levelData;
-        [SerializeField] private PlayerData playerData;
 
         [SerializeField] private PlacementManager placementManager;
 
@@ -95,6 +93,11 @@ namespace RabidRush.Towers
             var dict = new Dictionary<string, float>();
             //...
             return dict;
+        }
+
+        public Transform GetTransform()
+        {
+            return transform;
         }
 
         #endregion

@@ -8,6 +8,8 @@ public class SelectionHandler : MonoBehaviour
     private LayerMask _selectionMask;
     [SerializeField] private MiddleMenu middleMenu;
 
+    
+
     private void Awake()
     {
         _selectionMask = LayerMask.GetMask("Obstacle") | 

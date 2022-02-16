@@ -13,7 +13,11 @@ public class MiddleMenu : SideMenu
 
     private Label _unitName;
     private Label _unitStats;
-
+    
+    [SerializeField] private Camera inspectorCamera;
+    private Image _inspectorCameraView;
+    [SerializeField] private CustomRenderTexture tex;
+    private Vector3 _inspectorCameraOffset = new Vector3(0f, 0.5f, 0.5f);
     private void Start()
     {
         _inspector = Root.Q<VisualElement>("inspector");
@@ -26,8 +30,10 @@ public class MiddleMenu : SideMenu
         {
             LevelManager.Instance.lootEvents[i] += list => MenuChange(_lootSelection, true);    
         }
+
+        _inspectorCameraView = Root.Q<Image>("camera-selected-item");
         
-        
+        SetUpInspectorImage();
     }
 
     public void MenuChange(VisualElement menu, bool hide)
@@ -48,9 +54,11 @@ public class MiddleMenu : SideMenu
 
     public void BuildInspectorMenu(IInspectable inspected)
     {
-        
+        inspectorCamera.transform.position = inspected.GetTransform().position + _inspectorCameraOffset;
+        inspectorCamera.transform.LookAt(inspected.GetTransform());
         //...
-        _unitName.text = inspected.GetName();
+        // _unitName.text = inspected.GetName();
+        _unitName.text = "holu";
         _unitStats.text = inspected.GetLife().ToString();
         Debug.Log(inspected.GetName());
         MenuChange(_inspector, false);
@@ -61,4 +69,10 @@ public class MiddleMenu : SideMenu
         _middleMenuOnDisplay.style.display = DisplayStyle.None;
         _middleMenuOnDisplay = null;
     }
+
+    private void SetUpInspectorImage()
+    {
+        _inspectorCameraView.image = tex;
+    }
+        
 }

@@ -84,4 +84,9 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
     {
         return new Dictionary<string, float>();
     }
+    
+    public Transform GetTransform()
+    {
+        return transform;
+    }
 }

@@ -44,7 +44,7 @@
                 <ui:VisualElement name="inspector" style="flex-direction: column; flex-grow: 0; margin-top: 32px; margin-bottom: 32px; padding-left: 16px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px; background-color: rgba(15, 43, 44, 0.6); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; display: none;">
                     <ui:Label display-tooltip-when-elided="true" name="inspector-unit-name" enable-rich-text="true" style="flex-grow: 1; margin-top: 8px; margin-bottom: 8px; font-size: 30px; color: rgb(208, 236, 206);" />
                     <ui:VisualElement name="inspector-unit-description" style="flex-direction: row;">
-                        <ui:VisualElement name="camera-selected-item" style="align-items: auto; justify-content: flex-start; flex-grow: 1; width: 250px; height: 250px; background-color: rgb(132, 127, 127); min-width: 250px; min-height: 250px; margin-left: 16px; margin-right: 16px; margin-top: 16px; margin-bottom: 16px;" />
+                        <ui:Image name="camera-selected-item" style="align-items: auto; justify-content: flex-start; flex-grow: 1; width: 250px; height: 250px; background-color: rgb(132, 127, 127); min-width: 250px; min-height: 250px; margin-left: 16px; margin-right: 16px; margin-top: 16px; margin-bottom: 16px;" />
                         <ui:VisualElement style="margin-left: 16px; margin-right: 16px; margin-top: 16px; margin-bottom: 16px;">
                             <ui:Label text="Label" display-tooltip-when-elided="true" name="inspector-unit-stats" style="flex-grow: 1; margin-top: 8px; margin-bottom: 8px; font-size: 30px; color: rgb(208, 236, 206);" />
                         </ui:VisualElement>
