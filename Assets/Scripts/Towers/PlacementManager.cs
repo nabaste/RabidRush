@@ -12,10 +12,13 @@ namespace RabidRush.Towers
         [SerializeField] private Material mat;
         private Camera _gameCamera;
 
+        private float _snappingDistance;
+
         private void Awake()
         {
-           _placementLayerMask = LayerMask.GetMask("Default");
+            _placementLayerMask = LayerMask.GetMask("Default");
            _gameCamera = Camera.main;
+           _snappingDistance = LevelManager.Instance.pd.SnappingStrength;
         }
 
         private void Update()
@@ -23,6 +26,11 @@ namespace RabidRush.Towers
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 HandleClick();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                CancelPlacement();
             }
             transform.position = FollowCursor();
         }
@@ -32,6 +40,8 @@ namespace RabidRush.Towers
             var ray = _gameCamera.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out var hit, 400, _placementLayerMask);
             Vector3 mousePos = new Vector3(hit.point.x, 0.2f, hit.point.z);
+            if (Mathf.Abs(hit.point.x % 2) < _snappingDistance || Mathf.Abs(hit.point.x % 2) > 2-_snappingDistance) mousePos.x = Mathf.Round(hit.point.x); 
+            if (Mathf.Abs(hit.point.z % 2) < _snappingDistance || Mathf.Abs(hit.point.z % 2) > 2-_snappingDistance) mousePos.z = Mathf.Round(hit.point.z); 
             return mousePos;
         }
 
@@ -109,9 +119,18 @@ namespace RabidRush.Towers
 
         private void HandleClick()
         {
-            if (!_placementChecker.GetComponent<PlacementIndicator>().IsPosValid()) return;
+            if (!_placementChecker.GetComponent<PlacementIndicator>().IsPosValid())
+            {
+                gameObject.transform.Rotate(transform.up, 90);
+                return;
+            }
             Destroy();
             OnPlacement?.Invoke();
+        }
+
+        private void CancelPlacement()
+        {
+            Destroy(gameObject);
         }
     }
 }

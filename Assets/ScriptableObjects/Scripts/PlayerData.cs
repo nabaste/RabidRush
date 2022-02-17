@@ -24,5 +24,14 @@ namespace RabidRush.ScriptableObjects
 
         [SerializeField] private ItemList inventory;
         public ItemList Inventory => inventory;
+
+        [Range(0,1)]
+        [SerializeField] private float snappingStrength;
+        public float SnappingStrength
+        {
+            get => snappingStrength;
+            set => snappingStrength = value;
+        }
+        
     }
 }

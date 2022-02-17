@@ -18,6 +18,7 @@ public class MiddleMenu : SideMenu
     private Image _inspectorCameraView;
     [SerializeField] private CustomRenderTexture tex;
     private Vector3 _inspectorCameraOffset = new Vector3(0f, 0.5f, 0.5f);
+    
     private void Start()
     {
         _inspector = Root.Q<VisualElement>("inspector");

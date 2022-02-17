@@ -49,10 +49,7 @@ namespace RabidRush.ScriptableObjects
 
         #region Utilities
 
-        [Header("Utilities")] [SerializeField] private LayerMask zombieLayerMask;
-        public LayerMask ZombieLayerMask => zombieLayerMask;
-        [SerializeField] private LayerMask obstacleLayerMask;
-        public LayerMask ObstacleLayerMask => obstacleLayerMask;
+        [Header("Utilities")] 
 
         [SerializeField] private float placerSizeX;
         public float PlacerSizeX => placerSizeX;

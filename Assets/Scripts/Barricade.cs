@@ -23,7 +23,7 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
         _collider = GetComponent<BoxCollider>();
         _navMeshObstacle = GetComponent<NavMeshObstacle>();
         
-        placementManager.Build(2, 1, "Walkway");
+        placementManager.Build(1.8f, 1, "Walkway");
         placementManager.OnPlacement += OnPlacementHandler;
         placementManager.OnPlacement += PayForBarricade;
 

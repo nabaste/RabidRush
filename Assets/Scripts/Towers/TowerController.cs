@@ -28,7 +28,7 @@ namespace RabidRush.Towers
 
             _counter = model.cooldown;
 
-            placementManager.Build(1f, 1f, "Terrain");
+            placementManager.Build(model.towerData.PlacerSizeX, model.towerData.PlacerSizeZ, "Terrain");
         }
 
         private void WakeUp()

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   playerName: Nahbaste
-  kartAmount: 200
   level: 1
   inventory: {fileID: 11400000, guid: 892388d5de13e4aa593ea9cd463b0bd6, type: 2}
+  snappingStrength: 0.4
