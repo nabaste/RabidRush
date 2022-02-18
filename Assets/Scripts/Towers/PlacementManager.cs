@@ -39,7 +39,7 @@ namespace RabidRush.Towers
         {
             var ray = _gameCamera.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out var hit, 400, _placementLayerMask);
-            Vector3 mousePos = new Vector3(hit.point.x, 0.2f, hit.point.z);
+            Vector3 mousePos = new Vector3(hit.point.x, 0f, hit.point.z);
             if (Mathf.Abs(hit.point.x % 2) < _snappingDistance || Mathf.Abs(hit.point.x % 2) > 2-_snappingDistance) mousePos.x = Mathf.Round(hit.point.x); 
             if (Mathf.Abs(hit.point.z % 2) < _snappingDistance || Mathf.Abs(hit.point.z % 2) > 2-_snappingDistance) mousePos.z = Mathf.Round(hit.point.z); 
             return mousePos;

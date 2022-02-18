@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6e8630ffbb4f31b8f5596075afb80e, type: 3}
   m_Name: Start Position 5 Data
   m_EditorClassIdentifier: 
-  position: {x: -12, y: 0.2, z: -3}
+  position: {x: -11, y: 0, z: -2}
   priority: 0.1
   zombieDatas:
   - {fileID: 11400000, guid: 552e33b2beff64be48008db40c2ffded, type: 2}

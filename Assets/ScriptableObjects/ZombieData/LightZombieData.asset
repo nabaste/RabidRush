@@ -22,5 +22,5 @@ MonoBehaviour:
   innerGroupingTimeSeparation: 1
   outerGroupingTimeSeparation: 20
   timeSeparationVariance: 0.346
-  prefab: {fileID: 373303476033960276, guid: 32e2f14b681294c2dba2805dc5a998de, type: 3}
+  prefab: {fileID: 7201995486343804423, guid: 3bcbabc57150b48f4bd525c23629e369, type: 3}
   deathAnimationDuration: 0.4

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +8,7 @@ using RabidRush.ScriptableObjects;
 
 namespace RabidRush.Zombies
 {
-    public class ZombieModel : MonoBehaviour
+    public class ZombieModel : MonoBehaviour, IInspectable
     {
         [SerializeField] private ZombieController controller;
         public ZombieData zombieData;
@@ -55,11 +56,31 @@ namespace RabidRush.Zombies
 
 
 
-
-
+        #region IInspectable
         private void HitPlayer()
         {
             LevelManager.Instance.livesLeft--;
         }
+
+        public string GetName()
+        {
+            return zombieData.name;
+        }
+
+        public float GetLife()
+        {
+            return life;
+        }
+
+        public Dictionary<string, float> GetStats()
+        {
+            return new Dictionary<string, float>();
+        }
+
+        public Transform GetTransform()
+        {
+            return transform;
+        }
+        #endregion
     }
 }

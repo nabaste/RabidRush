@@ -14,7 +14,7 @@ public class MiddleMenu : SideMenu
     private Label _unitName;
     private Label _unitStats;
     
-    [SerializeField] private Camera inspectorCamera;
+    [SerializeField] private InspectorCamera inspectorCamera;
     private Image _inspectorCameraView;
     [SerializeField] private CustomRenderTexture tex;
     private Vector3 _inspectorCameraOffset = new Vector3(0f, 0.5f, 0.5f);
@@ -48,6 +48,10 @@ public class MiddleMenu : SideMenu
             return;
         }
 
+        if (_middleMenuOnDisplay == _inspector && menu != _inspector)
+        {
+            inspectorCamera.enabled = false;
+        }
         menu.style.display = DisplayStyle.Flex;
 
         _middleMenuOnDisplay = menu;
@@ -55,8 +59,8 @@ public class MiddleMenu : SideMenu
 
     public void BuildInspectorMenu(IInspectable inspected)
     {
-        inspectorCamera.transform.position = inspected.GetTransform().position + _inspectorCameraOffset;
-        inspectorCamera.transform.LookAt(inspected.GetTransform());
+        inspectorCamera.SetTarget(inspected);
+        inspectorCamera.enabled = true;
         //...
         // _unitName.text = inspected.GetName();
         _unitName.text = "holu";
