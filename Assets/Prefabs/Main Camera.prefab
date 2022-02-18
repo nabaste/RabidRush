@@ -107,7 +107,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -132,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomSpeed: 75
   zoomTime: 0.1
-  maxHeight: 30
+  maxHeight: 15
   minHeight: 1
   dragPanSpeed: 25
   keyPanSpeed: 25

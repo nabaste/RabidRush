@@ -7,6 +7,7 @@ namespace RabidRush.Towers
         [SerializeField] private TowerController controller;
         [SerializeField] private TowerModel model;
         private Animator _anim;
+        private static readonly int Attack = Animator.StringToHash("attack");
 
         private void Awake()
         {
@@ -18,7 +19,7 @@ namespace RabidRush.Towers
 
         private void OnShootHandler()
         {
-            // _anim.SetTrigger("Throw");
+            _anim.SetTrigger(Attack);
         }
 
         private void OnUpgradeHandler()

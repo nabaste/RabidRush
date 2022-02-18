@@ -1,20 +1,38 @@
 using System;
+using RabidRush.Zombies;
 using UnityEngine;
 
 
     public class InspectorCamera : MonoBehaviour
     {
+        private bool _watchingSomething = false;
         private Transform _target;
-        [SerializeField] private Vector3 _offset = new Vector3(1f, 0.3f, 0.6f);
+        private Vector3 _offset = new Vector3();
+        [SerializeField] private Vector2 offset = new Vector3();
+        [SerializeField] private float angleOffset;
 
-        private void Update()
+        private void LateUpdate()
         {
-            transform.position = _target.position + Vector3.Cross( _target.forward, _offset);
+            if (!_watchingSomething) return;
+            _offset = _target.forward;
+            _offset *= offset.x;
+            _offset.y = offset.y + 0.4f; //average character height
+            _offset = Quaternion.AngleAxis(angleOffset, _target.up) * _offset;
+            transform.position = _target.position + _offset;
             transform.LookAt(_target);
         }
 
         public void SetTarget(IInspectable target)
         {
             _target = target.GetTransform();
+            _watchingSomething = true;
+            if (!_target.gameObject.TryGetComponent(out ZombieModel zm)) return;
+                zm.OnDeath += StopWatching;
+        }
+
+        private void StopWatching()
+        {
+            _target = null;
+            _watchingSomething = false;
         }
     }

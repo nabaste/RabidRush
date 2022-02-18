@@ -7,7 +7,7 @@ namespace RabidRush.Towers
     public class TowerModel : MonoBehaviour, IInspectable
     {
         [SerializeField] public TowerData towerData;
-        [SerializeField] private LevelData levelData;
+        private LevelData _levelData;
 
         [SerializeField] private PlacementManager placementManager;
 
@@ -23,6 +23,8 @@ namespace RabidRush.Towers
 
         private void Awake()
         {
+            _levelData = LevelManager.Instance.levelData;
+            
             life = towerData.Life;
             range = towerData.Range;
             damage = towerData.Damage;
@@ -54,7 +56,7 @@ namespace RabidRush.Towers
 
         private void SetRotationToFaceClosestStartLocation()
         {
-            foreach (var location in levelData.StartLocations)
+            foreach (var location in _levelData.StartLocations)
             {
                 _startLocations.Add(location.Position - transform.position);
             }

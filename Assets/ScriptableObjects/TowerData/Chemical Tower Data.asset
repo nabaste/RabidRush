@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Cedric
   towerIcon: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 6220854095469338592, guid: 4d18c8daf71f7433dbe56edecbbcdcfc, type: 3}
   life: 20
   range: 20
   damage: 20
@@ -24,13 +24,7 @@ MonoBehaviour:
   cost: 20
   sellPricePercentage: 20
   upgradeCost: 20
-  zombieLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  placerSizeX: 2
-  placerSizeZ: 2
+  placerSizeX: 1.9
+  placerSizeZ: 1.9
   pace: 20
   duration: 2

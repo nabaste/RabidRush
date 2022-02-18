@@ -16,6 +16,7 @@ public class SelectionHandler : MonoBehaviour
                          LayerMask.GetMask("Tower") | 
                          LayerMask.GetMask("Zombie");
     }
+    
 
     private void Update()
     {

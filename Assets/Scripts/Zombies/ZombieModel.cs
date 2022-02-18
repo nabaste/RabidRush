@@ -21,7 +21,6 @@ namespace RabidRush.Zombies
 
         public Action OnDeath;
 
-
         private void Start()
         {
             life = zombieData.Life;

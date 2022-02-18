@@ -10,6 +10,7 @@ namespace RabidRush.Towers
         {
             base.Update();
         }
+        
         protected override void Shoot()
         {
             ZombieController zombieTarget = _enemiesInSight[0];

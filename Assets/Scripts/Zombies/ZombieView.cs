@@ -8,7 +8,9 @@ namespace RabidRush.Zombies
         [SerializeField] private ZombieController controller;
         private Animator _anim;
         private ParticleSystem _particles;
-    
+        private static readonly int Hit = Animator.StringToHash("hit");
+        private static readonly int Alive = Animator.StringToHash("alive");
+
         private void Awake()
         {
             _anim = GetComponent<Animator>();
@@ -32,12 +34,12 @@ namespace RabidRush.Zombies
 
         private void OnDeathHandler()
         {
-            //....
+            _anim.SetBool(Alive, false);
         }
 
         private void OnDamageTakenHandler()
         {
-            //...
+            _anim.SetTrigger(Hit);
         }
     }
 }

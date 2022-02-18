@@ -24,11 +24,5 @@ MonoBehaviour:
   cost: 20
   sellPricePercentage: 20
   upgradeCost: 20
-  zombieLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  placerSizeX: 2
-  placerSizeZ: 2
+  placerSizeX: 1.9
+  placerSizeZ: 1.9
