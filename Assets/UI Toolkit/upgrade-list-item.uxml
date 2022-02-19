@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="tower-list-item" class="tower-list-item" style="flex-direction: row; height: auto;">
+        <ui:VisualElement name="tower-list-item-img" style="min-width: 30px; min-height: 30px; background-color: rgb(204, 192, 20); background-image: url(&apos;/Assets/Materials/Icons/BarricadeIcon.png&apos;); -unity-background-image-tint-color: rgb(231, 42, 42); width: auto; height: auto; margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px; align-items: auto; max-width: 150px; max-height: 150px; flex-grow: 1; justify-content: flex-start; -unity-background-scale-mode: scale-to-fit;" />
+        <ui:Label text="Melee" display-tooltip-when-elided="true" name="tower-list-item-label" style="margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; font-size: 36px; color: rgb(238, 224, 224);" />
+    </ui:VisualElement>
+</ui:UXML>
