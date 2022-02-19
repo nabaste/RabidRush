@@ -47,7 +47,6 @@ namespace RabidRush.Towers
         protected virtual void Shoot()
         {
             _enemiesInSight[0]?.GetDamage(model.damage, kindOfDamage.physical);
-            // Debug.Log($"Shot {_enemiesInSight[0].name}");
             _counter = model.cooldown;
         }
 

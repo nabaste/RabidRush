@@ -9,6 +9,8 @@ namespace RabidRush.ScriptableObjects
         public float Life => life;
         [SerializeField] private int cost;
         public int Cost => cost;
+        [SerializeField] private float sellPricePercentage;
+        public float SellPricePercentage => sellPricePercentage;
         [SerializeField] private GameObject prefab;
         public GameObject Prefab => prefab;
     }

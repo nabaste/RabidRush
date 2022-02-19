@@ -20,6 +20,7 @@ namespace RabidRush.Towers
         private List<Vector3> _startLocations = new List<Vector3>();
 
         public Action OnUpgrade;
+        public Action OnSell;
 
         private void Awake()
         {
@@ -34,6 +35,8 @@ namespace RabidRush.Towers
 
             placementManager.OnPlacement += PayForTower;
             placementManager.OnPlacement += SetRotationToFaceClosestStartLocation;
+
+            OnSell += SellTower;
         }
 
         public void Upgrade(TowerStats stat, float amount)
@@ -50,8 +53,7 @@ namespace RabidRush.Towers
                     damage *= amount;
                     break;
             }
-
-            OnUpgrade?.Invoke();
+            LevelManager.Instance.KartAmount -= towerData.UpgradeCost;
         }
 
         private void SetRotationToFaceClosestStartLocation()
@@ -78,6 +80,12 @@ namespace RabidRush.Towers
             LevelManager.Instance.KartAmount -= towerData.Cost;
         }
 
+        private void SellTower()
+        {
+            LevelManager.Instance.KartAmount += Mathf.RoundToInt( towerData.Cost * towerData.SellPricePercentage );
+            Destroy(gameObject); 
+        }
+
         #region IInspectable
 
         public string GetName()
@@ -93,8 +101,18 @@ namespace RabidRush.Towers
         public Dictionary<string, float> GetStats()
         {
             var dict = new Dictionary<string, float>();
-            //...
+            dict.Add("Life", life);
+            dict.Add("Attack Damage", towerData.Damage);
+            dict.Add("Range", towerData.Range);
             return dict;
+        }
+
+        public Dictionary<string, Action> GetPossibleActions()
+        {
+            var actions = new Dictionary<string, Action>();
+            actions.Add($"Upgrade for {towerData.UpgradeCost}", OnUpgrade);
+            actions.Add($"Sell for {towerData.Cost * towerData.SellPricePercentage}", OnSell);
+            return actions;
         }
 
         public Transform GetTransform()

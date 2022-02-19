@@ -1,4 +1,5 @@
 using System;
+using RabidRush.Towers;
 using RabidRush.Zombies;
 using UnityEngine;
 
@@ -26,6 +27,16 @@ using UnityEngine;
         {
             _target = target.GetTransform();
             _watchingSomething = true;
+            if(_target.gameObject.TryGetComponent(out Barricade barr))
+            {
+                barr.OnSell += StopWatching;
+                return;
+            }
+            if(_target.gameObject.TryGetComponent(out TowerModel tm))
+            {
+                tm.OnSell += StopWatching;
+                return;
+            }
             if (!_target.gameObject.TryGetComponent(out ZombieModel zm)) return;
                 zm.OnDeath += StopWatching;
         }

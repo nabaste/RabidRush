@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   cost: 45
+  sellPricePercentage: 0.8
   prefab: {fileID: 6084789747037302741, guid: c625352642771417884df6b970613906, type: 3}

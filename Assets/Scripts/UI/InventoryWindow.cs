@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 public class InventoryWindow : SideMenu
 {
     [SerializeField] private VisualTreeAsset inventoryItem;
-
     private VisualElement _inventoryItemsContainer;
 
     private void Start()

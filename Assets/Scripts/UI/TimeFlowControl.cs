@@ -8,6 +8,7 @@ public class TimeFlowControl : SideMenu
     private Button _ffButton;
 
     [SerializeField] private VisualElement pauseMenu;
+    // [SerializeField] private VisualTreeAsset pauseMenu; 
     public void Start()
     {
         
@@ -19,13 +20,17 @@ public class TimeFlowControl : SideMenu
         _playPauseButton.RegisterCallback<ClickEvent>(ev => OnPlayPauseButtonClick());
         _ffButton.RegisterCallback<ClickEvent>(ev => OnFFButtonClick());
 
-        pauseMenu = Root.Q<VisualElement>("Menu-Window");
+        pauseMenu = Root.Q<VisualElement>("menu-container");
     }
     private void OnMenuButtonClick()
     {
         Debug.Log("Menu");
         Time.timeScale = 0;
         pauseMenu.style.display = DisplayStyle.Flex;
+        // var menu = pauseMenu.Instantiate();
+        // Root.Add(menu);
+        // menu.style.position.value = Position.Absolute;
+
 
     }
     private void OnPlayPauseButtonClick()

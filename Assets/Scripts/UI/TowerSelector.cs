@@ -33,6 +33,8 @@ public class TowerSelector : SideMenu
             listItem.RegisterCallback<ClickEvent>(evt => PlaceTower(t));
             var text = listItem.Q<Label>("tower-list-item-label");
             text.text = t.TowerName;
+            
+            //Check if player has sufficient funds
         }
     }
 

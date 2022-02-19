@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="BaseStyles.uss" />
+    <ui:VisualElement name="action-button-container">
+        <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="action-button" class="action-button" />
+    </ui:VisualElement>
+</ui:UXML>

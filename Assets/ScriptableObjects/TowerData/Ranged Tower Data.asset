@@ -22,7 +22,7 @@ MonoBehaviour:
   rotationSpeed: 100
   angleFOV: 90
   cost: 20
-  sellPricePercentage: 0.85
+  sellPricePercentage: 0.8
   upgradeCost: 10
   placerSizeX: 1.9
   placerSizeZ: 1.9

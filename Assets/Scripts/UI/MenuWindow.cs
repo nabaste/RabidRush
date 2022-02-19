@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
     {
         protected VisualElement Root;
 
-        private VisualElement _menuWindow;
+        private VisualElement _menuContainer;
         private Button _resumeButton;
         private void OnEnable()
         {
@@ -15,7 +15,7 @@ using UnityEngine.UIElements;
 
         private void Start()
         {
-            _menuWindow = Root.Q<VisualElement>("Menu-Window");
+            _menuContainer = Root.Q<VisualElement>("menu-container");
             _resumeButton = Root.Q<Button>("menu-window-resume-button");
             
             _resumeButton.RegisterCallback<ClickEvent>(ev => OnResumeButtonClick());
@@ -24,6 +24,6 @@ using UnityEngine.UIElements;
         private void OnResumeButtonClick()
         {
             Time.timeScale = 1;
-            _menuWindow.style.display = DisplayStyle.None;
+            _menuContainer.style.display = DisplayStyle.None;
         }
     }

@@ -42,8 +42,8 @@ namespace RabidRush.ScriptableObjects
         public int Cost => cost;
         [SerializeField] private float sellPricePercentage;
         public float SellPricePercentage => sellPricePercentage;
-        [SerializeField] private float upgradeCost;
-        public float UpgradeCost => upgradeCost;
+        [SerializeField] private int upgradeCost;
+        public int UpgradeCost => upgradeCost;
 
         #endregion
 

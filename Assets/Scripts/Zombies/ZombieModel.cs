@@ -18,11 +18,14 @@ namespace RabidRush.Zombies
         [NonSerialized] public float attackCooldown;
         private NavMeshAgent _navMeshAgent = new NavMeshAgent();
 
-
         public Action OnDeath;
+        public Action OnPrioritized;
+        
 
         private void Start()
         {
+            levelData = LevelManager.Instance.levelData;
+            
             life = zombieData.Life;
             attackCooldown = zombieData.AttackCooldown;
 
@@ -44,6 +47,13 @@ namespace RabidRush.Zombies
         private void DisableNavMeshAgent()
         {
             _navMeshAgent.enabled = false;
+        }
+
+        public IEnumerator StopNavMesh(float time)
+        {
+            _navMeshAgent.speed = 0;
+            yield return new WaitForSeconds(time);
+            _navMeshAgent.speed = zombieData.Speed;
         }
 
         public bool CheckIfDead()
@@ -73,7 +83,17 @@ namespace RabidRush.Zombies
 
         public Dictionary<string, float> GetStats()
         {
-            return new Dictionary<string, float>();
+            var dict = new Dictionary<string, float>();
+            dict.Add("Life", life);
+            dict.Add("Attack Damage", zombieData.AttackDamage);
+            return dict;
+        }
+        
+        public Dictionary<string, Action> GetPossibleActions()
+        {
+            var actions = new Dictionary<string, Action>();
+            actions.Add("Make Priority", OnPrioritized);
+            return actions;
         }
 
         public Transform GetTransform()

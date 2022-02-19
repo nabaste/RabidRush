@@ -16,7 +16,8 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
 
     [SerializeField] private PlacementManager placementManager;
 
-    public Action OnDestroyed;
+    public event Action OnDestroyed;
+    public event Action OnSell;
 
     private void Start()
     {
@@ -28,6 +29,9 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
         placementManager.OnPlacement += PayForBarricade;
 
         _life = bd.Life;
+
+        OnSell += SellBarricade;
+        OnSell += OnDestroyed;
     }
 
     private void OnPlacementHandler()
@@ -42,18 +46,12 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
         LevelManager.Instance.KartAmount -= bd.Cost;
     }
 
-    private void Update()
+    private void SellBarricade()
     {
-        if(_placed) return;
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            transform.rotation = Quaternion.Euler(0, 90f, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+        LevelManager.Instance.KartAmount += Mathf.RoundToInt(bd.Cost * bd.SellPricePercentage * (_life/bd.Life));
+        Destroy(gameObject);
     }
+    
     public void GetDamage(float dmg, kindOfDamage kind, float pace = 0, float duration = 0)
     {
         _life -= dmg;
@@ -82,7 +80,16 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
 
     public Dictionary<string, float> GetStats()
     {
-        return new Dictionary<string, float>();
+        var stats = new Dictionary<string, float>();
+        stats.Add("life", _life);
+        return stats;
+    }
+    public Dictionary<string, Action> GetPossibleActions()
+    {
+        var actions = new Dictionary<string, Action>();
+        int sellPrice = Mathf.RoundToInt(bd.Cost * bd.SellPricePercentage * (_life / bd.Life));
+        actions.Add($"sell for {sellPrice}", OnSell);
+        return actions;
     }
     
     public Transform GetTransform()

@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Label text="stats" display-tooltip-when-elided="true" name="inspector-unit-stats" style="flex-grow: 1; margin-top: 8px; margin-bottom: 8px; font-size: 30px; color: rgb(208, 236, 206);" />
+</ui:UXML>

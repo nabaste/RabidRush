@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using RabidRush.ScriptableObjects;
+using RabidRush.Towers;
+using RabidRush.Zombies;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,30 +13,39 @@ public class MiddleMenu : SideMenu
     private VisualElement _middleMenuOnDisplay;
     private VisualElement _inspector;
     private VisualElement _lootSelection;
-
     private Label _unitName;
-    private Label _unitStats;
-    
+    // private Label _unitStats;
+
     [SerializeField] private InspectorCamera inspectorCamera;
     private Image _inspectorCameraView;
     [SerializeField] private CustomRenderTexture tex;
     private Vector3 _inspectorCameraOffset = new Vector3(0f, 0.5f, 0.5f);
-    
+
+    [SerializeField] private VisualTreeAsset statListItem;
+    private VisualElement _statListContainer;
+    [SerializeField] private VisualTreeAsset actionButton;
+    private VisualElement _actionsContainer;
+
+    [SerializeField] private ActionButtons ab;
+
     private void Start()
     {
         _inspector = Root.Q<VisualElement>("inspector");
         _lootSelection = Root.Q<VisualElement>("loot-selector");
-        
+
         _unitName = Root.Q<Label>("inspector-unit-name");
-        _unitStats = Root.Q<Label>("inspector-unit-stats");
+        // _unitStats = Root.
 
         for (int i = 0; i < LevelManager.Instance.lootEvents.Count; i++)
         {
-            LevelManager.Instance.lootEvents[i] += list => MenuChange(_lootSelection, true);    
+            LevelManager.Instance.lootEvents[i] += list => MenuChange(_lootSelection, true);
         }
 
         _inspectorCameraView = Root.Q<Image>("camera-selected-item");
-        
+
+        _statListContainer = Root.Q<VisualElement>("stat-items-container");
+        _actionsContainer = Root.Q<VisualElement>("actions-container");
+
         SetUpInspectorImage();
     }
 
@@ -52,6 +64,7 @@ public class MiddleMenu : SideMenu
         {
             inspectorCamera.enabled = false;
         }
+
         menu.style.display = DisplayStyle.Flex;
 
         _middleMenuOnDisplay = menu;
@@ -61,11 +74,28 @@ public class MiddleMenu : SideMenu
     {
         inspectorCamera.SetTarget(inspected);
         inspectorCamera.enabled = true;
-        //...
-        // _unitName.text = inspected.GetName();
         _unitName.text = "holu";
-        _unitStats.text = inspected.GetLife().ToString();
-        Debug.Log(inspected.GetName());
+        
+        _statListContainer.Clear();
+        _actionsContainer.Clear();
+        
+        foreach (var stat in inspected.GetStats())
+        {
+            VisualElement listItem = statListItem.Instantiate();
+            _statListContainer.Add(listItem);
+            Label textElement = listItem.Q<Label>("inspector-unit-stats");
+            textElement.text = stat.Key + ":" + stat.Value;
+        }
+
+        foreach (var action in inspected.GetPossibleActions())
+        {
+            VisualElement buttonContainer = actionButton.Instantiate();
+            _actionsContainer.Add(buttonContainer);
+            Button button = buttonContainer.Q<Button>("action-button");
+            button.text = action.Key;
+            button.RegisterCallback<ClickEvent>(evt => action.Value.Invoke());
+        }
+
         MenuChange(_inspector, false);
     }
 
@@ -79,5 +109,6 @@ public class MiddleMenu : SideMenu
     {
         _inspectorCameraView.image = tex;
     }
-        
+
+    
 }

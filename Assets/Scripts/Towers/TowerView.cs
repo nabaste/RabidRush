@@ -24,6 +24,7 @@ namespace RabidRush.Towers
 
         private void OnUpgradeHandler()
         {
+            Debug.Log("upgraded");
             //Make the animator run an animation showing an upgrade
         }
     }

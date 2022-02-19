@@ -10,6 +10,7 @@ namespace RabidRush.Zombies
         private ParticleSystem _particles;
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int Alive = Animator.StringToHash("alive");
+        private static readonly int Attack = Animator.StringToHash("attack");
 
         private void Awake()
         {
@@ -29,7 +30,7 @@ namespace RabidRush.Zombies
 
         private void OnAttackHandler()
         {
-            //..
+            _anim.SetTrigger(Attack);
         }
 
         private void OnDeathHandler()
@@ -40,6 +41,7 @@ namespace RabidRush.Zombies
         private void OnDamageTakenHandler()
         {
             _anim.SetTrigger(Hit);
+            StartCoroutine(model.StopNavMesh(2f));
         }
     }
 }

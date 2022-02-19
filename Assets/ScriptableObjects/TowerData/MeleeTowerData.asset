@@ -17,12 +17,12 @@ MonoBehaviour:
   prefab: {fileID: 6196001989918384938, guid: 24251290a2dbc4f0e99e75e11d4b48a6, type: 3}
   life: 40
   range: 20
-  damage: 202
-  cooldown: 2
+  damage: 20
+  cooldown: 4
   rotationSpeed: 20
   angleFOV: 20
   cost: 20
-  sellPricePercentage: 20
+  sellPricePercentage: 0.8
   upgradeCost: 2
   placerSizeX: 1.9
   placerSizeZ: 1.9

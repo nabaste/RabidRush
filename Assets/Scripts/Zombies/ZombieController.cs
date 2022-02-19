@@ -105,6 +105,8 @@ namespace RabidRush.Zombies
                     GetChemicalDamage(damage, pace, duration);
                     //something
                     break;
+                default:
+                    break;
             }
         }
 
