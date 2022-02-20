@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Samara
   kind: 2
-  towerIcon: {fileID: 0}
+  towerIcon: {fileID: 21300000, guid: ccb96b3a44c80442b88ea3ed5b48c11d, type: 3}
   prefab: {fileID: 8108871515770633290, guid: 6b0a3af2a33b44c0d9d6cbdbfad2c11f, type: 3}
   towerDescription: A street warrior throwing molotov cocktails dealing Area of Effect
     damage.

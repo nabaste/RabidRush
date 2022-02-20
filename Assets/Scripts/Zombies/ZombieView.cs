@@ -41,6 +41,7 @@ namespace RabidRush.Zombies
         private void OnDamageTakenHandler()
         {
             _anim.SetTrigger(Hit);
+            _particles.Play();
             StartCoroutine(model.StopNavMesh(2f));
         }
     }

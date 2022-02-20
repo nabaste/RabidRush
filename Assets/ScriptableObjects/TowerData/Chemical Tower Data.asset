@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Cedric
   kind: 3
-  towerIcon: {fileID: 0}
+  towerIcon: {fileID: 21300000, guid: f771da09981494458b74a39afe1461dd, type: 3}
   prefab: {fileID: 6220854095469338592, guid: 4d18c8daf71f7433dbe56edecbbcdcfc, type: 3}
   towerDescription: An alchemist throwing special potions that chemically burn enemies
     over time

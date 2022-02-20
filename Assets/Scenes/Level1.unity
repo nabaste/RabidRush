@@ -724,7 +724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &760512171
 Transform:
   m_ObjectHideFlags: 0
@@ -2207,6 +2207,10 @@ PrefabInstance:
     - target: {fileID: 648102654001408174, guid: f036aa33361b447c6931e9031821c1a4, type: 3}
       propertyPath: m_Name
       value: BorderWalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 648102654001408174, guid: f036aa33361b447c6931e9031821c1a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f036aa33361b447c6931e9031821c1a4, type: 3}

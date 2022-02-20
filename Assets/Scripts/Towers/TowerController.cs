@@ -20,6 +20,7 @@ namespace RabidRush.Towers
         
         private void Awake()
         {
+            Debug.Log("awoke");
             _zombieLayerMask = LayerMask.GetMask("Zombie");
             _obstacleLayerMask = LayerMask.GetMask("Obstacle");
 
@@ -33,6 +34,7 @@ namespace RabidRush.Towers
 
         private void WakeUp()
         {
+            Debug.Log("invoked");
             this.enabled = true;
         }
 

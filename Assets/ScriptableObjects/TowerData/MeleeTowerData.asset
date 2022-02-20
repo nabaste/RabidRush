@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Charlie
   kind: 0
-  towerIcon: {fileID: 0}
+  towerIcon: {fileID: 21300000, guid: c0a91195a1da54d53b15522345edabaf, type: 3}
   prefab: {fileID: 6196001989918384938, guid: 24251290a2dbc4f0e99e75e11d4b48a6, type: 3}
   towerDescription: A melee fighter.
   life: 40
