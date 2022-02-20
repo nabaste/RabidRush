@@ -73,7 +73,7 @@ public class MiddleMenu : SideMenu
     {
         inspectorCamera.SetTarget(inspected);
         inspectorCamera.enabled = true;
-        _unitName.text = "holu";
+        _unitName.text = inspected.GetName();
         
         _statListContainer.Clear();
         _actionsContainer.Clear();

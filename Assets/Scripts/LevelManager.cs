@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using RabidRush.ScriptableObjects;
 using UnityEngine.UIElements;
+using Debug = UnityEngine.Debug;
 
 public class LevelManager : MonoBehaviour
 {
@@ -92,8 +94,24 @@ public class LevelManager : MonoBehaviour
     private List<Item> GetLoot()
     {
         var lootOptions = new List<Item>();
-        // lootOptions.Clear();
-        lootOptions = lm.DrawThreeItems(levelData.AvailableItems.itemList, gd.MediumLootRates);
+        // var ratesToUse;
+        var ratesToUse = new float[4];
+        switch (pd.Level)
+        {
+            case DifficultyLevel.Easy:
+                ratesToUse = gd.EasyLootRates;
+                break;
+            case DifficultyLevel.Medium:
+                ratesToUse = gd.MediumLootRates;
+                break;
+            case DifficultyLevel.Hard:
+                ratesToUse = gd.HardLootRates;
+                break;
+            default:
+                break;
+        }
+
+        lootOptions = lm.DrawThreeItems(levelData.AvailableItems.itemList, ratesToUse);
         return lootOptions;
     }
 

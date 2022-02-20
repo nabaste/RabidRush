@@ -37,6 +37,7 @@ public class UpgradesList : SideMenu
                 listItem.RegisterCallback<ClickEvent>(evt =>
                 {
                     tower.Upgrade(item);
+                    inventory.itemList.Remove(item);
                     _upgradesWindow.style.display = DisplayStyle.None;
                 });
             }

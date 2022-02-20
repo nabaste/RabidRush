@@ -59,7 +59,7 @@ public class WavesParametersGenerator : MonoBehaviour
                 //           $"Se gastó {zl.zombies[j].PoolingCost * zl.zombies[j].Grouping * groupAmount} del budget");
             }
 
-            var extra = RandomLootGenerator.Roll(chances);
+            // var extra = RandomLootGenerator.Roll(chances);
         }
         _zp.CreatePoolObjects();
         CreateSpawners();

@@ -28,6 +28,22 @@ public class InventoryWindow : SideMenu
 
             slot.tooltip = item.Description;
             slot.AddManipulator(new ToolTipManipulator());
+
+            switch (item.Rarity)
+            {
+                case ItemRarity.normal:
+                    slot.style.backgroundColor = Color.gray;
+                    break;
+                case ItemRarity.difficult:
+                    slot.style.backgroundColor = Color.green;
+                    break;
+                case ItemRarity.rare:
+                    slot.style.backgroundColor = Color.blue;
+                    break;
+                case ItemRarity.epic:
+                    slot.style.backgroundColor = Color.red;
+                    break;
+            }
         }
     }
 }

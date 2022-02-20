@@ -5,7 +5,7 @@ namespace RabidRush.Towers
 {
     public class AoETowerController : TowerController
     {
-        [SerializeField] private float _impactRange;
+        [SerializeField] public float _impactRange;
         new void Update()
         {
             base.Update();

@@ -5,6 +5,7 @@ using RabidRush.ScriptableObjects;
 using RabidRush.Towers;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
 {
@@ -15,6 +16,8 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
 
     [SerializeField] private PlacementManager placementManager;
 
+    private int _totalKarts;
+    private int _currentKarts;
     public event Action OnDestroyed;
     public event Action OnSell;
 
@@ -28,7 +31,10 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
         placementManager.OnPlacement += PayForBarricade;
 
         _life = bd.Life;
-
+        
+        _totalKarts = transform.childCount;
+        _currentKarts = _totalKarts;
+        
         OnSell += SellBarricade;
         OnSell += OnDestroyed;
     }
@@ -54,6 +60,7 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
     {
         _life -= dmg;
         CheckIfDestroyed();
+        ShowDamage();
     }
     public int GetCost()
     {
@@ -93,5 +100,18 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    private void ShowDamage()
+    {
+        var dmgPer = Mathf.RoundToInt(_life / bd.Life);
+        var kartsToRemove = _currentKarts - dmgPer;
+        
+        for (int i = 0; i < kartsToRemove; i++)
+        {
+            var kartToDestroy = transform.GetChild(Random.Range(0, _currentKarts-1));
+            Destroy(kartToDestroy.gameObject);
+            _currentKarts--;
+        }
     }
 }
