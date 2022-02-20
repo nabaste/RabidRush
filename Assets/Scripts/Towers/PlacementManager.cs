@@ -126,8 +126,7 @@ namespace RabidRush.Towers
                 return;
             }
             Destroy();
-            Debug.Log("invoke");
-            OnPlacement?.Invoke();
+            OnPlacement.Invoke();
         }
 
         private void CancelPlacement()
