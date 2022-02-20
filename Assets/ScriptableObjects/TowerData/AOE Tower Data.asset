@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: Samara
   kind: 2
   towerIcon: {fileID: 0}
-  prefab: {fileID: 8783238528578557975, guid: 663493b0f0584469c9a5312f1a7b7fd1, type: 3}
+  prefab: {fileID: 8108871515770633290, guid: 6b0a3af2a33b44c0d9d6cbdbfad2c11f, type: 3}
   life: 20
   range: 20
   damage: 20

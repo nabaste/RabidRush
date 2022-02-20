@@ -94,9 +94,16 @@ public class MiddleMenu : SideMenu
             button.text = action.Key;
             button.RegisterCallback<ClickEvent>(evt =>
             {
-                action.Value.Invoke();
-                if(action.Key == $"Upgrade for {inspected.GetTransform().gameObject.GetComponent<TowerModel>().towerData.UpgradeCost}") 
+                action.Value?.Invoke();
+                if (action.Key ==
+                    $"Upgrade for {inspected.GetTransform().gameObject.GetComponent<TowerModel>().towerData.UpgradeCost}")
+                {
                     ul.BuildUpgradeOptions(inspected.GetTransform().gameObject.GetComponent<TowerModel>());
+                }
+                else
+                {
+                    HideMiddleMenu();
+                }
             });
         }
 

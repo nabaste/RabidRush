@@ -10,7 +10,6 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
 {
     [SerializeField] private BarricadeData bd;
     private float _life;
-    private bool _placed = false;
     private BoxCollider _collider;
     private NavMeshObstacle _navMeshObstacle;
 
@@ -38,7 +37,6 @@ public class Barricade : MonoBehaviour, IDamageable, IPurchaseable, IInspectable
     {
         _collider.enabled = true;
         _navMeshObstacle.enabled = true;
-        _placed = true;
     }
 
     private void PayForBarricade()

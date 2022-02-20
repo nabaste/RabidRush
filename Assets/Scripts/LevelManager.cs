@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private KartCounter kc;
     private int _kartAmount;
+
     public int KartAmount
     {
         get => _kartAmount;
@@ -23,13 +24,14 @@ public class LevelManager : MonoBehaviour
             kc.Refresh();
         }
     }
+
     public int livesLeft;
 
     [SerializeField] public LootManager lm;
     public event Action<List<Item>> Loot0;
     public event Action<List<Item>> Loot1;
     public event Action<List<Item>> Loot2;
-    
+
     public List<Action<List<Item>>> lootEvents;
 
     #region Singleton
@@ -55,7 +57,7 @@ public class LevelManager : MonoBehaviour
     {
         _instance = this;
         levelData = levelList.levels[SceneManager.GetActiveScene().buildIndex];
-        
+
         lootEvents = new List<Action<List<Item>>>(levelData.LootTimes.Count)
         {
             Loot0,

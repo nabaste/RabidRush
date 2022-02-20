@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b157835d85b4449a8273fc723cffa5, type: 3}
   m_Name: Box
   m_EditorClassIdentifier: 
-  itemName: 
-  id: 0
-  description: 
-  rarity: 0
+  itemName: Box
+  id: 7
+  description: Decreases Samara's cooldown
+  rarity: 1
   img: {fileID: 0}
-  statToImprove: 0
-  changePercentage: 0
-  wearer: 0
+  statToImprove: 2
+  changePercentage: 0.9
+  wearer: 2

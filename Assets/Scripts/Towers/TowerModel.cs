@@ -20,6 +20,7 @@ namespace RabidRush.Towers
         private List<Vector3> _startLocations = new List<Vector3>();
 
         public Action OnUpgrade;
+        public Action OnUpgradeWindow;
         public Action OnSell;
 
         private void Awake()
@@ -54,6 +55,7 @@ namespace RabidRush.Towers
                     break;
             }
             LevelManager.Instance.KartAmount -= towerData.UpgradeCost;
+            OnUpgrade.Invoke();
         }
 
         private void SetRotationToFaceClosestStartLocation()
@@ -110,7 +112,7 @@ namespace RabidRush.Towers
         public Dictionary<string, Action> GetPossibleActions()
         {
             var actions = new Dictionary<string, Action>();
-            actions.Add($"Upgrade for {towerData.UpgradeCost}", OnUpgrade);
+            actions.Add($"Upgrade for {towerData.UpgradeCost}", OnUpgradeWindow);
             actions.Add($"Sell for {towerData.Cost * towerData.SellPricePercentage}", OnSell);
             return actions;
         }

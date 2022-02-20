@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Bat
   id: 1
-  description: 
-  rarity: 0
+  description: Increases Charlie's damage
+  rarity: 1
   img: {fileID: 0}
-  statToImprove: 0
-  changePercentage: 0
+  statToImprove: 1
+  changePercentage: 1.1
   wearer: 0

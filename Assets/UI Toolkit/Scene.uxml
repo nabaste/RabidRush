@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:Template name="Menu-Window" />
+    <ui:Template name="menu-window" src="menu-window.uxml" />
     <Style src="BaseStyles.uss" />
     <ui:VisualElement name="Base" style="justify-content: space-between; flex-grow: 1;">
         <ui:VisualElement name="SideBar" class="side-bar">
@@ -75,6 +75,6 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="menu-container" class="menu-container" style="display: none;">
-        <ui:Instance template="Menu-Window" name="Menu-Window" />
+        <ui:Instance template="menu-window" name="menu-window" />
     </ui:VisualElement>
 </ui:UXML>

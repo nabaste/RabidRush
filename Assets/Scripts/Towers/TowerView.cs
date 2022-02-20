@@ -8,6 +8,7 @@ namespace RabidRush.Towers
         [SerializeField] private TowerModel model;
         private Animator _anim;
         private static readonly int Attack = Animator.StringToHash("attack");
+        private static readonly int Upgrade = Animator.StringToHash("upgrade");
 
         private void Awake()
         {
@@ -24,8 +25,7 @@ namespace RabidRush.Towers
 
         private void OnUpgradeHandler()
         {
-            Debug.Log("upgraded");
-            //Make the animator run an animation showing an upgrade
+            _anim.SetTrigger(Upgrade);
         }
     }
 }
