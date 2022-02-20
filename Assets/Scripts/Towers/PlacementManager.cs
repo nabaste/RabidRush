@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RabidRush.Towers
@@ -13,7 +14,7 @@ namespace RabidRush.Towers
         private Camera _gameCamera;
 
         private float _snappingDistance;
-
+        private Vector3 _heightOffset = new Vector3(0, 0.15f, 0);
         private void Awake()
         {
             _placementLayerMask = LayerMask.GetMask("Default");
@@ -52,7 +53,7 @@ namespace RabidRush.Towers
                 transform =
                 {
                     parent = transform,
-                    position = transform.position
+                    position = transform.position + _heightOffset
                 },
                 name = "Placement Indicator",
                 layer = 8
@@ -132,5 +133,6 @@ namespace RabidRush.Towers
         {
             Destroy(gameObject);
         }
+        
     }
 }

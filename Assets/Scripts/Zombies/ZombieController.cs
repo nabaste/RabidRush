@@ -82,6 +82,7 @@ namespace RabidRush.Zombies
 
         private void CleanTarget()
         {
+            
             _target = null;
         }
 

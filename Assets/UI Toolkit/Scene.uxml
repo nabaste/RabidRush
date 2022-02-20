@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:Template name="menu-window" src="menu-window.uxml" />
     <Style src="BaseStyles.uss" />
-    <ui:VisualElement name="Base" style="justify-content: space-between; flex-grow: 1;">
+    <ui:VisualElement name="Base" style="justify-content: space-between; flex-grow: 1; margin-left: 0; margin-right: 48px; margin-top: 48px;">
         <ui:VisualElement name="SideBar" class="side-bar">
             <ui:VisualElement name="upper-menu" class="upper-menu">
                 <ui:VisualElement name="time-flow-control" class="time-flow-control">

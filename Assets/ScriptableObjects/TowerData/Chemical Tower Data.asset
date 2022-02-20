@@ -16,11 +16,13 @@ MonoBehaviour:
   kind: 3
   towerIcon: {fileID: 0}
   prefab: {fileID: 6220854095469338592, guid: 4d18c8daf71f7433dbe56edecbbcdcfc, type: 3}
+  towerDescription: An alchemist throwing special potions that chemically burn enemies
+    over time
   life: 20
-  range: 20
+  range: 4
   damage: 20
   cooldown: 20
-  rotationSpeed: 20
+  rotationSpeed: 1.5
   angleFOV: 20
   cost: 20
   sellPricePercentage: 0.8

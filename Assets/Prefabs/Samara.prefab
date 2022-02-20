@@ -1089,6 +1089,7 @@ GameObject:
   - component: {fileID: 8108871515770633285}
   - component: {fileID: 8108871515770633284}
   - component: {fileID: 809015447034153329}
+  - component: {fileID: 5257669419843273577}
   m_Layer: 8
   m_Name: Samara
   m_TagString: Untagged
@@ -1125,7 +1126,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 8956e605539e74f80b90e5df0aa621ad, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1200,6 +1201,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11912429, y: 0.43652034, z: 0.08242118}
   m_Center: {x: 0.0018351674, y: 0.21567416, z: -0.0018351674}
+--- !u!114 &5257669419843273577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108871515770633290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa54c545a664f6abace804786e75e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: cb9af48b5c3704e72b569cf654afeddf, type: 2}
+  pm: {fileID: 8108871515770633291}
+  tm: {fileID: 8108871515770633286}
 --- !u!1 &8308040577051221777
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,11 +16,12 @@ MonoBehaviour:
   kind: 1
   towerIcon: {fileID: 21300000, guid: 24e3be323b287487ca875ce736cd1a61, type: 3}
   prefab: {fileID: 3367520428470960767, guid: a854a6982e387482fa54ab09c12922b9, type: 3}
+  towerDescription: A trained archer, capable of hitting enemies at great distances.
   life: 20
-  range: 20
+  range: 8
   damage: 10
   cooldown: 2
-  rotationSpeed: 100
+  rotationSpeed: 2
   angleFOV: 90
   cost: 20
   sellPricePercentage: 0.8

@@ -31,10 +31,15 @@ public class TowerSelector : SideMenu
             VisualElement listItem = towerListItem.Instantiate();
             _towerListContainer.Add(listItem);
             listItem.RegisterCallback<ClickEvent>(evt => PlaceTower(t));
+            
             var text = listItem.Q<Label>("tower-list-item-label");
             text.text = t.TowerName;
+            
             var img = listItem.Q<VisualElement>("tower-list-item-img");
             img.style.backgroundImage = new StyleBackground(t.TowerIcon);
+
+            listItem.tooltip = t.TowerDescription;
+            listItem.AddManipulator(new ToolTipManipulator());
 
 
             //Check if player has sufficient funds

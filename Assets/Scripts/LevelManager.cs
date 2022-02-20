@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using RabidRush.ScriptableObjects;
+using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class LevelManager : MonoBehaviour
     public event Action<List<Item>> Loot2;
 
     public List<Action<List<Item>>> lootEvents;
+
+    public VisualElement RootVisualElement;
 
     #region Singleton
 

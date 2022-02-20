@@ -1025,7 +1025,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 9000eeb861f7c4e5bb2b5fba4a8baf4a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1042,8 +1042,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15330932, y: 0.3776643, z: 0.13719603}
-  m_Center: {x: -0.0029297024, y: 0.18518968, z: -0.0007324368}
+  m_Size: {x: 0.27195218, y: 0.3776643, z: 0.2954638}
+  m_Center: {x: -0.0029297024, y: 0.18518968, z: 0.011664838}
 --- !u!195 &7563163439801196993
 NavMeshAgent:
   m_ObjectHideFlags: 0

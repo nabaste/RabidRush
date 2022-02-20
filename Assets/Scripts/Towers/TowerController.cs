@@ -17,14 +17,14 @@ namespace RabidRush.Towers
 
         protected List<ZombieController> _enemiesInSight = new List<ZombieController>();
         protected float _counter;
-
+        
         private void Awake()
         {
             _zombieLayerMask = LayerMask.GetMask("Zombie");
             _obstacleLayerMask = LayerMask.GetMask("Obstacle");
 
             placementManager.OnPlacement += WakeUp;
-            OnShoot = Shoot;
+            OnShoot += Shoot;
 
             _counter = model.cooldown;
 
@@ -39,6 +39,7 @@ namespace RabidRush.Towers
         protected void Update()
         {
             _counter -= Time.deltaTime;
+            TargetEnemy();
             _enemiesInSight = MultiTargetLineOfSight();
 
             if (_counter <= 0 && _enemiesInSight.Count > 0) OnShoot?.Invoke();
@@ -48,6 +49,25 @@ namespace RabidRush.Towers
         {
             _enemiesInSight[0]?.GetDamage(model.damage, kindOfDamage.physical);
             _counter = model.cooldown;
+        }
+        
+        protected void TargetEnemy()
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, model.range, _zombieLayerMask);
+            List<ZombieController> results = new List<ZombieController>();
+            if (colliders.Length == 0) return;
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                results.Add(colliders[i].gameObject.GetComponent<ZombieController>());
+            }
+            ConsiderPrioritaryTarget(results);
+            LookAtTarget(results[0].transform);
+        }
+        void LookAtTarget(Transform target)
+        {
+            Vector3 targetDirection = new Vector3(target.position.x, target.position.y, target.position.z);
+            Quaternion newRotation = Quaternion.LookRotation(targetDirection - transform.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, model.towerData.RotationSpeed * Time.deltaTime);
         }
 
         private List<ZombieController> MultiTargetLineOfSight()
@@ -63,16 +83,17 @@ namespace RabidRush.Towers
             {
                 var current = colliders[i];
                 Vector3 posDifference = current.transform.position - transform.position;
-                // if (!IsInVisionAngle(posDifference, front)) continue;
-                // float distance = posDifference.magnitude;
+                if (!IsInVisionAngle(posDifference, front)) continue;
+                float distance = posDifference.magnitude;
                 if (!IsInView(posDifference.normalized, model.range, _obstacleLayerMask)) continue;
-                if (!current.gameObject.TryGetComponent(out ZombieController zc)) return new List<ZombieController>();
-                result.Add(zc);
+                // if (!current.gameObject.TryGetComponent(out ZombieController zc)) return new List<ZombieController>();
+                // if(current.gameObject.GetComponent<ZombieController>())
+                result.Add(current.gameObject.GetComponent<ZombieController>());
             }
 
 
-            ConsiderPrioritaryTarget(result);
-            model.LookAtTarget(result[0].transform);
+            // ConsiderPrioritaryTarget(result);
+            // model.LookAtTarget(result[0].transform);
             return result;
         }
 

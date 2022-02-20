@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="BaseStyles.uss" />
+    <ui:VisualElement name="main-menu-container" style="align-items: center; justify-content: flex-start; flex-grow: 1;">
+        <ui:Label text="&lt;b&gt; RABID RUSH &lt;/b&gt;" display-tooltip-when-elided="true" name="main-menu-title" style="font-size: 120px; flex-grow: 1;" />
+        <ui:Button text="Start Game" display-tooltip-when-elided="true" name="main-menu-start-game" class="selector-button" />
+        <ui:Button text="Options" display-tooltip-when-elided="true" name="main-menu-options-button" class="selector-button" />
+        <ui:Button text="Exit" display-tooltip-when-elided="true" name="main-menu-quit-button" class="selector-button" />
+        <ui:VisualElement style="flex-grow: 1; justify-content: flex-end; -unity-background-image-tint-color: rgba(164, 50, 50, 255);">
+            <ui:Label text="Created by @nahbaste for CoderHouse." display-tooltip-when-elided="true" name="main-menu-credits" style="font-size: 30px; -unity-background-image-tint-color: rgba(152, 68, 68, 255); background-color: rgba(171, 104, 104, 255); color: rgba(113, 8, 8, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

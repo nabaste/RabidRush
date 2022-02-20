@@ -16,6 +16,9 @@ namespace RabidRush.ScriptableObjects
         public Sprite TowerIcon => towerIcon;
         [SerializeField] private GameObject prefab;
         public GameObject Prefab => prefab;
+        [TextArea(0, 30)]
+        [SerializeField] private string towerDescription;
+        public string TowerDescription => towerDescription;
         #endregion
 
         #region BasicStats

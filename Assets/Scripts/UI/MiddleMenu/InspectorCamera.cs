@@ -29,7 +29,7 @@ using UnityEngine;
             _watchingSomething = true;
             if(_target.gameObject.TryGetComponent(out Barricade barr))
             {
-                barr.OnSell += StopWatching;
+                barr.OnDestroyed += StopWatching;
                 return;
             }
             if(_target.gameObject.TryGetComponent(out TowerModel tm))

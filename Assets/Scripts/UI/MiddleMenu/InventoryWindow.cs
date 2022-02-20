@@ -22,8 +22,12 @@ public class InventoryWindow : SideMenu
         {
             VisualElement slot = inventoryItem.Instantiate();
             _inventoryItemsContainer.Add(slot);
+            
             var displayImg = item.Img;
             slot.style.backgroundImage = new StyleBackground(displayImg);
+
+            slot.tooltip = item.Description;
+            slot.AddManipulator(new ToolTipManipulator());
         }
     }
 }

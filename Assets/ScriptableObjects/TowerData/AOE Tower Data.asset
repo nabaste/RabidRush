@@ -16,11 +16,13 @@ MonoBehaviour:
   kind: 2
   towerIcon: {fileID: 0}
   prefab: {fileID: 8108871515770633290, guid: 6b0a3af2a33b44c0d9d6cbdbfad2c11f, type: 3}
+  towerDescription: A street warrior throwing molotov cocktails dealing Area of Effect
+    damage.
   life: 20
-  range: 20
+  range: 6
   damage: 20
   cooldown: 20
-  rotationSpeed: 20
+  rotationSpeed: 1
   angleFOV: 20
   cost: 20
   sellPricePercentage: 0.8

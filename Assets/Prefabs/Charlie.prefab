@@ -1124,6 +1124,7 @@ GameObject:
   - component: {fileID: 6196001989918384951}
   - component: {fileID: 6196001989918384950}
   - component: {fileID: 6196001989918384937}
+  - component: {fileID: -3088483828524419255}
   m_Layer: 8
   m_Name: Charlie
   m_TagString: Untagged
@@ -1234,6 +1235,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 6196001989918384950}
   model: {fileID: 6196001989918384951}
+--- !u!114 &-3088483828524419255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6196001989918384938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa54c545a664f6abace804786e75e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: cb9af48b5c3704e72b569cf654afeddf, type: 2}
+  pm: {fileID: 6196001989918384939}
+  tm: {fileID: 6196001989918384951}
 --- !u!1 &6212988047967060081
 GameObject:
   m_ObjectHideFlags: 0

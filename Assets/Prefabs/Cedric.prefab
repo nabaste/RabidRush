@@ -1157,6 +1157,7 @@ GameObject:
   - component: {fileID: 6220854095469338621}
   - component: {fileID: 6220854095469338595}
   - component: {fileID: -7858216285460637159}
+  - component: {fileID: 6609540233905658218}
   m_Layer: 8
   m_Name: Cedric
   m_TagString: Untagged
@@ -1268,6 +1269,21 @@ MonoBehaviour:
   model: {fileID: 6220854095469338621}
   placementManager: {fileID: 6220854095469338593}
   chemicalTowerData: {fileID: 11400000, guid: 58ed4da16ff0a4fccad09ed306c73135, type: 2}
+--- !u!114 &6609540233905658218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6220854095469338592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa54c545a664f6abace804786e75e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: cb9af48b5c3704e72b569cf654afeddf, type: 2}
+  pm: {fileID: 6220854095469338593}
+  tm: {fileID: 6220854095469338621}
 --- !u!1 &6380090481412382967
 GameObject:
   m_ObjectHideFlags: 0

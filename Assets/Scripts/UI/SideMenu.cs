@@ -7,5 +7,6 @@ public abstract class SideMenu : MonoBehaviour
     private void OnEnable()
     {
         Root = GetComponentInParent<UIDocument>().rootVisualElement;
+        LevelManager.Instance.RootVisualElement = Root;
     }
 }
