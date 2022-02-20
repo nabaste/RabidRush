@@ -39,18 +39,18 @@ namespace RabidRush.Towers
             OnSell += SellTower;
         }
 
-        public void Upgrade(TowerStats stat, float amount)
+        public void Upgrade(Item item)
         {
-            switch (stat)
+            switch (item.StatToImprove)
             {
                 case TowerStats.Cooldown:
-                    cooldown *= amount;
+                    cooldown *= item.ChangePercentage;
                     break;
                 case TowerStats.Range:
-                    range *= amount;
+                    range *= item.ChangePercentage;
                     break;
                 case TowerStats.Damage:
-                    damage *= amount;
+                    damage *= item.ChangePercentage;
                     break;
             }
             LevelManager.Instance.KartAmount -= towerData.UpgradeCost;

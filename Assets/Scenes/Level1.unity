@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 921796257}
   - component: {fileID: 921796256}
   - component: {fileID: 921796260}
+  - component: {fileID: 921796261}
   m_Layer: 5
   m_Name: MiddleMenu
   m_TagString: Untagged
@@ -1052,6 +1053,7 @@ MonoBehaviour:
   tex: {fileID: 8600000, guid: 23edf77ab59af4e03a5404efc99e5b83, type: 2}
   statListItem: {fileID: 9197481963319205126, guid: e1e13da96694f472b919277fddd8e4a0, type: 3}
   actionButton: {fileID: 9197481963319205126, guid: 190a83d1565d8468586d96a3bdc36e0b, type: 3}
+  ul: {fileID: 921796261}
 --- !u!114 &921796259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,6 +1081,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootListItem: {fileID: 9197481963319205126, guid: 8712b76c764a14735b09bc3a893a478f, type: 3}
   mm: {fileID: 921796258}
+--- !u!114 &921796261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921796254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adbd367092b4778893ed37ffcdc7707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeItem: {fileID: 9197481963319205126, guid: 57187b4ecb5394c88b619bd31c41753d, type: 3}
 --- !u!1 &1081464373
 GameObject:
   m_ObjectHideFlags: 0

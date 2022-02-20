@@ -14,19 +14,17 @@ public class MiddleMenu : SideMenu
     private VisualElement _inspector;
     private VisualElement _lootSelection;
     private Label _unitName;
-    // private Label _unitStats;
-
+    
     [SerializeField] private InspectorCamera inspectorCamera;
     private Image _inspectorCameraView;
     [SerializeField] private CustomRenderTexture tex;
-    private Vector3 _inspectorCameraOffset = new Vector3(0f, 0.5f, 0.5f);
 
     [SerializeField] private VisualTreeAsset statListItem;
     private VisualElement _statListContainer;
     [SerializeField] private VisualTreeAsset actionButton;
     private VisualElement _actionsContainer;
 
-    [SerializeField] private ActionButtons ab;
+    [SerializeField] private UpgradesList ul;
 
     private void Start()
     {
@@ -63,6 +61,7 @@ public class MiddleMenu : SideMenu
         if (_middleMenuOnDisplay == _inspector && menu != _inspector)
         {
             inspectorCamera.enabled = false;
+            ul.HideUpgradeWindow();
         }
 
         menu.style.display = DisplayStyle.Flex;
@@ -93,7 +92,12 @@ public class MiddleMenu : SideMenu
             _actionsContainer.Add(buttonContainer);
             Button button = buttonContainer.Q<Button>("action-button");
             button.text = action.Key;
-            button.RegisterCallback<ClickEvent>(evt => action.Value.Invoke());
+            button.RegisterCallback<ClickEvent>(evt =>
+            {
+                action.Value.Invoke();
+                if(action.Key == $"Upgrade for {inspected.GetTransform().gameObject.GetComponent<TowerModel>().towerData.UpgradeCost}") 
+                    ul.BuildUpgradeOptions(inspected.GetTransform().gameObject.GetComponent<TowerModel>());
+            });
         }
 
         MenuChange(_inspector, false);

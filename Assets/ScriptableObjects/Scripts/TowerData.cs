@@ -10,6 +10,8 @@ namespace RabidRush.ScriptableObjects
         [Header("Display Properties")] 
         [SerializeField] private string towerName;
         public string TowerName => towerName;
+        [SerializeField] private global::Towers kind;
+        public global::Towers Kind => kind;
         [SerializeField] private Sprite towerIcon;
         public Sprite TowerIcon => towerIcon;
         [SerializeField] private GameObject prefab;

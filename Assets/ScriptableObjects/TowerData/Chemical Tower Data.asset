@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Chemical Tower Data
   m_EditorClassIdentifier: 
   towerName: Cedric
+  kind: 3
   towerIcon: {fileID: 0}
   prefab: {fileID: 6220854095469338592, guid: 4d18c8daf71f7433dbe56edecbbcdcfc, type: 3}
   life: 20

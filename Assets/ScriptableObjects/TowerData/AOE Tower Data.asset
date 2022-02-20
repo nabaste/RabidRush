@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: AOE Tower Data
   m_EditorClassIdentifier: 
   towerName: Samara
+  kind: 2
   towerIcon: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 8783238528578557975, guid: 663493b0f0584469c9a5312f1a7b7fd1, type: 3}
   life: 20
   range: 20
   damage: 20

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14b157835d85b4449a8273fc723cffa5, type: 3}
-  m_Name: Charlie's Gloves 2
+  m_Name: Slingshot
   m_EditorClassIdentifier: 
-  itemName: 
-  id: 1
-  description: 
+  itemName: Slingshot
+  id: 3
+  description: Increases Chloe's range
   rarity: 0
   img: {fileID: 0}
   statToImprove: 0
-  changePercentage: 0
-  wearer: 0
+  changePercentage: 1.1
+  wearer: 1
