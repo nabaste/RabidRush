@@ -31,9 +31,9 @@ namespace RabidRush.Towers
             placementManager.Build(model.towerData.PlacerSizeX, model.towerData.PlacerSizeZ, "Terrain");
         }
 
-        private void WakeUp()
+        public void WakeUp()
         {
-            this.enabled = true;
+            enabled = true;
         }
 
         protected void Update()

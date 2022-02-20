@@ -58,7 +58,7 @@ namespace RabidRush.Towers
             OnUpgrade.Invoke();
         }
 
-        private void SetRotationToFaceClosestStartLocation()
+        public void SetRotationToFaceClosestStartLocation()
         {
             foreach (var location in _levelData.StartLocations)
             {
@@ -77,7 +77,7 @@ namespace RabidRush.Towers
             transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
         }
 
-        private void PayForTower()
+        public void PayForTower()
         {
             LevelManager.Instance.KartAmount -= towerData.Cost;
         }

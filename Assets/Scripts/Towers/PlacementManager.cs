@@ -126,7 +126,16 @@ namespace RabidRush.Towers
                 return;
             }
             Destroy();
-            OnPlacement.Invoke();
+            OnPlacement?.Invoke();
+            //for some reson, it is not getting invoked.
+            
+            if (!gameObject.TryGetComponent<TowerController>(out TowerController tc)) return;
+            tc.WakeUp();
+            
+            if (!gameObject.TryGetComponent<TowerModel>(out TowerModel tm)) return;
+            tm.PayForTower();
+            tm.SetRotationToFaceClosestStartLocation();
+            
         }
 
         private void CancelPlacement()
