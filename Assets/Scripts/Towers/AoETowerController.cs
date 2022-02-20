@@ -9,6 +9,7 @@ namespace RabidRush.Towers
         new void Update()
         {
             base.Update();
+            
         }
         
         protected override void Shoot()
