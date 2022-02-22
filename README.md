@@ -10,4 +10,5 @@ Rabid Rush is a classic tower defense with elements taken from different branche
 ## Visual Style
 The visual appearance is a continuation of the nowadays widely popular cel shading style. It resembles the visual language of classic comics and was created with the intention of exploring the use of fashion by zombies and characters alike.
 
-This project is in development.
+## Current state
+This project is currently in development. It has a placeholder UI and some very basic assets. Most basic mechanics are implemented.
