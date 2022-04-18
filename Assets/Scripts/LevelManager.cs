@@ -15,7 +15,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public PlayerData pd;
     [SerializeField] public GameData gd;
 
-    [SerializeField] private KartCounter kc;
     private int _kartAmount;
 
     public int KartAmount
@@ -24,7 +23,6 @@ public class LevelManager : MonoBehaviour
         set
         {
             _kartAmount = value;
-            kc.Refresh();
         }
     }
 
@@ -37,7 +35,6 @@ public class LevelManager : MonoBehaviour
 
     public List<Action<List<Item>>> lootEvents;
 
-    public VisualElement RootVisualElement;
 
     #region Singleton
 
