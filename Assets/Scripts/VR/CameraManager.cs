@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    private Vector3 startMovementPosition = new Vector3(0, 0, 0);
+    private Vector3 controllerStartMovementPosition = new Vector3(0, 0, 0);
+    private Vector3 playerStartMovementPosition = new Vector3(0, 0, 0);
+    private Vector3 controllerDrag = new Vector3(0, 0, 0);
+    public float moveSpeed;
+    public float moveIntensity;
+    public GameObject controllerPrefab;
+    public GameObject controllerL;
+    public GameObject controllerR;
+    public GameObject LHAnchor;
+    public GameObject RHAnchor;
 
     private Vector3 startZoomPositionL = new Vector3(0, 0, 0);
     private Vector3 startZoomPositionR = new Vector3(0, 0, 0);
@@ -27,19 +36,6 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private OVRCameraRig cameraRig;
     [SerializeField] private Camera centerEyeCamera;
 
-    private CharacterController player;
-    private float playerMovSpeed = 10f;
-
-    private Vector3 movDir = new Vector3(0.002f, 0.003f, 0.005f);
-
-    private void Awake()
-    {
-        player = GetComponent<CharacterController>();
-        startMovementPosition = transform.TransformPoint(OVRInput.GetLocalControllerPosition(activeMovementController));
-        startZoomPositionL = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
-        startZoomPositionR = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-
-    }
     private void Update() //should it be lateupdate?
     {
         movePress = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) > 0.2f ^ OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) > 0.2f;
@@ -47,13 +43,14 @@ public class CameraManager : MonoBehaviour
 
         if (zoomPress) Zoom();
         else zoomPressed = false;
-        Move();
-
+        if (movePress) Move();
+        
+        else if (movePressed) movePressed = false;
     }
 
     private void Zoom()
     {
-       
+
         if (!zoomPressed)
         {
             startZoomPositionL = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
@@ -67,45 +64,38 @@ public class CameraManager : MonoBehaviour
         }
         zoomPositionL = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
         zoomPositionR = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-        
-        separation += (zoomPositionL - zoomPositionR).magnitude - separation; 
-        //float separation = (OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) - OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)).magnitude;
+
+        separation += (zoomPositionL - zoomPositionR).magnitude - separation;
         zoomIntensity = separation / initialControllerSeparation;
 
 
         Vector3 targetPos = startZoomPosition + centerEyeCamera.transform.forward * (zoomIntensity - 1) * zoomSensitivity;
         transform.position = Vector3.MoveTowards(transform.position, targetPos, zoomSpeed * Time.deltaTime);
-        //player.Move(step);
 
-
-        //if (zoomIntensity > 1 + zoomSensitivity) player.Move(centerEyeCamera.transform.forward * zoomIntensity * zoomSpeed * Time.deltaTime);
-        //else if (zoomIntensity < 1 - zoomSensitivity) player.Move(-centerEyeCamera.transform.forward * zoomIntensity * zoomSpeed * Time.deltaTime);
 
     }
 
     private void Move()
     {
-        if (movePress && !movePressed)
+        if (!movePressed)
         {
             activeMovementController = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) > 0 ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
+            controllerStartMovementPosition = OVRInput.GetLocalControllerPosition(activeMovementController);
+            playerStartMovementPosition = transform.position;
 
-            startMovementPosition = transform.TransformPoint(OVRInput.GetLocalControllerPosition(activeMovementController));
+
 
             movePressed = true;
             return;
 
         }
 
-        if (!movePress)
-        {
-            movePressed = false;
-            return;
-        }
 
-        Vector3 moveDir = transform.TransformPoint(OVRInput.GetLocalControllerPosition(activeMovementController)) - startMovementPosition;
-        moveDir.Normalize();
-        float moveInt = (cameraRig.centerEyeAnchor.position - startMovementPosition).magnitude;
 
-        player.Move(-moveDir * moveInt * playerMovSpeed * Time.deltaTime);
+
+        controllerDrag += (OVRInput.GetLocalControllerPosition(activeMovementController) - controllerStartMovementPosition) - controllerDrag;
+        Vector3 targetPos = playerStartMovementPosition - controllerDrag * moveIntensity;
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
     }
 }
